@@ -85,12 +85,10 @@ class FirebaseAuthRepository(
 
     private val authStateListener = FirebaseAuth.AuthStateListener { firebaseAuth ->
         val user = firebaseAuth.currentUser
-        _authState.value = if (user != null) {
-            AuthState.Authenticated(user.toAuthUser())
-        } else if (_authState.value !is AuthState.Error) {
-            AuthState.Unauthenticated
-        } else {
-            _authState.value
+        if (user != null) {
+            _authState.value = AuthState.Authenticated(user.toAuthUser())
+        } else if (_authState.value !is AuthState.Error && _authState.value !is AuthState.Authenticated) {
+            _authState.value = AuthState.Unauthenticated
         }
     }
 
@@ -108,7 +106,11 @@ class FirebaseAuthRepository(
     }
 
     override val currentUser: AuthUser?
-        get() = runCatching { auth.currentUser?.toAuthUser() }.getOrNull()
+        get() {
+            val authenticatedUser = (_authState.value as? AuthState.Authenticated)?.user
+            if (authenticatedUser != null) return authenticatedUser
+            return runCatching { auth.currentUser?.toAuthUser() }.getOrNull()
+        }
 
     override val isAuthenticated: Boolean
         get() = currentUser != null
@@ -407,13 +409,27 @@ class FirebaseAuthRepository(
             current.toAuthUser()
         } else {
             AuthUser(
-                uid = "test_user_guest_${System.currentTimeMillis() / 1000}",
+                uid = "test_user_guest",
                 phoneNumber = "+91 98765 43210",
                 email = "tester@jeevasutra.app",
                 displayName = "Test User"
             )
         }
         _authState.value = AuthState.Authenticated(authUser)
+
+        repoScope.launch {
+            try {
+                if (auth.currentUser == null) {
+                    val result = auth.signInAnonymously().await()
+                    val anonUser = result.user
+                    if (anonUser != null) {
+                        _authState.value = AuthState.Authenticated(anonUser.toAuthUser())
+                    }
+                }
+            } catch (e: Exception) {
+                Log.w(TAG, "Firebase anonymous sign-in skipped, maintaining test mode user: ${e.message}")
+            }
+        }
     }
 
     override suspend fun linkGmailAccount(activityContext: Context): Result<String> {
