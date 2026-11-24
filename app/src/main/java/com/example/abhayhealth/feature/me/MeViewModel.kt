@@ -48,7 +48,8 @@ class MeViewModel(
     private val vitalReadingRepository: VitalReadingRepository? = null,
     private val firestoreHealthRepository: FirestoreHealthRepository? = null,
     private val firestoreHealthSyncManager: FirestoreHealthSyncManager? = null,
-    private val medicineIntakeLogDao: MedicineIntakeLogDao? = null
+    private val medicineIntakeLogDao: MedicineIntakeLogDao? = null,
+    private val pinAuthenticationRepository: com.example.abhayhealth.domain.repository.PinAuthenticationRepository? = null
 ) : ViewModel() {
 
     val patientName: StateFlow<String?> = userPreferencesRepository.patientName.stateIn(
@@ -96,6 +97,59 @@ class MeViewModel(
         started = SharingStarted.WhileSubscribed(5000),
         initialValue = !authRepository.currentUser?.email.isNullOrBlank()
     )
+
+    val isPinConfigured: StateFlow<Boolean> = authRepository.authState.map { state ->
+        val uid = when (state) {
+            is AuthState.Authenticated -> state.user.uid
+            else -> authRepository.currentUser?.uid
+        }
+        if (uid != null && pinAuthenticationRepository != null) {
+            pinAuthenticationRepository.isPinConfigured(uid)
+        } else false
+    }.stateIn(
+        scope = viewModelScope,
+        started = SharingStarted.WhileSubscribed(5000),
+        initialValue = false
+    )
+
+    fun disablePin(onResult: (Boolean) -> Unit) {
+        val uid = (authRepository.authState.value as? AuthState.Authenticated)?.user?.uid
+            ?: authRepository.currentUser?.uid
+        if (uid != null && pinAuthenticationRepository != null) {
+            viewModelScope.launch {
+                val res = pinAuthenticationRepository.disablePin(uid)
+                onResult(res.isSuccess)
+            }
+        } else {
+            onResult(false)
+        }
+    }
+
+    fun changePin(oldPin: String, newPin: String, onResult: (Result<Unit>) -> Unit) {
+        val uid = (authRepository.authState.value as? AuthState.Authenticated)?.user?.uid
+            ?: authRepository.currentUser?.uid
+        if (uid != null && pinAuthenticationRepository != null) {
+            viewModelScope.launch {
+                val res = pinAuthenticationRepository.changePin(uid, oldPin, newPin)
+                onResult(res)
+            }
+        } else {
+            onResult(Result.failure(IllegalStateException("No authenticated user")))
+        }
+    }
+
+    fun setupPinInSettings(pin: String, onResult: (Boolean) -> Unit) {
+        val uid = (authRepository.authState.value as? AuthState.Authenticated)?.user?.uid
+            ?: authRepository.currentUser?.uid
+        if (uid != null && pinAuthenticationRepository != null) {
+            viewModelScope.launch {
+                val res = pinAuthenticationRepository.setupPin(uid, pin)
+                onResult(res.isSuccess)
+            }
+        } else {
+            onResult(false)
+        }
+    }
 
     val optionalBackupGmail: StateFlow<String?> = combine(
         userPreferencesRepository.optionalBackupGmail,

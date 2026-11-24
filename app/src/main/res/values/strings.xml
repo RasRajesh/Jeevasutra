@@ -10,6 +10,43 @@
     <string name="nav_medicines">Medicines</string>
     <string name="nav_me">Me</string>
 
+    <!-- Mobile Login PIN Strings -->
+    <string name="pin_setup_banner_title">Secure Your Health Records</string>
+    <string name="pin_setup_banner_desc">Set up a 6-digit Mobile PIN to unlock JeevaSutra quickly without waiting for OTP code every time.</string>
+    <string name="pin_setup_title">Create Your Secure PIN</string>
+    <string name="pin_setup_subtitle">Your health information deserves an extra layer of protection.</string>
+    <string name="pin_label_enter">Enter 6-digit PIN</string>
+    <string name="pin_label_confirm">Confirm 6-digit PIN</string>
+    <string name="pin_btn_save">Set Up PIN</string>
+    <string name="pin_btn_skip">Skip for Now</string>
+    <string name="pin_err_length">PIN must be exactly 6 numeric digits.</string>
+    <string name="pin_err_mismatch">PINs do not match. Please enter matching PINs.</string>
+    <string name="pin_setup_success">Your JeevaSutra PIN has been successfully configured.</string>
+
+    <string name="pin_login_title">Welcome Back to JeevaSutra</string>
+    <string name="pin_login_subtitle">Enter your 6-digit Mobile PIN to unlock your health vault for %1$s</string>
+    <string name="pin_login_masked_account">Account: %1$s</string>
+    <string name="pin_login_btn_unlock">Unlock App</string>
+    <string name="pin_login_btn_forgot">Forgot PIN?</string>
+    <string name="pin_login_btn_use_otp">Sign In with Mobile OTP</string>
+    <string name="pin_err_incorrect">Incorrect PIN. %1$d attempts remaining.</string>
+    <string name="pin_err_lockout">Too many failed attempts. Try again in %1$ds.</string>
+
+    <string name="pin_settings_section">Mobile Login PIN</string>
+    <string name="pin_settings_status_enabled">Mobile PIN Enabled (6-digit active)</string>
+    <string name="pin_settings_status_disabled">Mobile PIN Disabled (OTP login only)</string>
+    <string name="pin_settings_btn_setup">Set Up Mobile PIN</string>
+    <string name="pin_settings_btn_change">Change Mobile PIN</string>
+    <string name="pin_settings_btn_disable">Disable Mobile PIN</string>
+    <string name="pin_change_title">Change Mobile PIN</string>
+    <string name="pin_change_label_old">Current 6-digit PIN</string>
+    <string name="pin_change_label_new">New 6-digit PIN</string>
+    <string name="pin_change_label_confirm">Confirm New 6-digit PIN</string>
+    <string name="pin_disable_confirm_title">Disable Mobile PIN?</string>
+    <string name="pin_disable_confirm_desc">Disabling PIN login will require mobile OTP verification whenever you open JeevaSutra. Your health records remain safe.</string>
+    <string name="pin_reset_otp_title">Reset Forgotten PIN</string>
+    <string name="pin_reset_otp_desc">Verify your registered mobile number via OTP to create a new secure PIN.</string>
+
     <!-- Splash Screen -->
     <string name="splash_loading">Initializing your secure health environment…</string>
 

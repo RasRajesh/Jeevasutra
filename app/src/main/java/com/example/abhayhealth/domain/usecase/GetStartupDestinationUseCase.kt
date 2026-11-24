@@ -10,28 +10,27 @@ import kotlinx.coroutines.flow.combine
 class GetStartupDestinationUseCase(
     private val userPreferencesRepository: UserPreferencesRepository,
     private val authRepository: AuthRepository,
-    private val profileRepository: PatientProfileRepository
+    private val profileRepository: PatientProfileRepository,
+    private val pinAuthenticationRepository: com.example.abhayhealth.domain.repository.PinAuthenticationRepository? = null
 ) {
     operator fun invoke(): Flow<StartupDestination> {
         return combine(
             userPreferencesRepository.isOnboardingCompleted,
             authRepository.authState
         ) { _, authState ->
-            when {
-                authState is AuthState.Authenticated -> {
-                    val uid = authState.user.uid
-                    val hasProfile = profileRepository.hasProfile(uid)
-                    if (hasProfile) StartupDestination.Main else StartupDestination.ProfileSetup
+            val currentUser = (authState as? AuthState.Authenticated)?.user ?: authRepository.currentUser
+            if (currentUser != null) {
+                val uid = currentUser.uid
+                val hasProfile = profileRepository.hasProfile(uid)
+                val isPinConfigured = pinAuthenticationRepository?.isPinConfigured(uid) ?: false
+
+                when {
+                    isPinConfigured -> StartupDestination.PinLogin
+                    hasProfile -> StartupDestination.Main
+                    else -> StartupDestination.ProfileSetup
                 }
-                authRepository.isAuthenticated -> {
-                    val uid = authRepository.currentUser?.uid
-                    if (uid != null && profileRepository.hasProfile(uid)) {
-                        StartupDestination.Main
-                    } else {
-                        StartupDestination.ProfileSetup
-                    }
-                }
-                else -> StartupDestination.Onboarding
+            } else {
+                StartupDestination.Onboarding
             }
         }
     }
@@ -41,5 +40,6 @@ sealed interface StartupDestination {
     data object Onboarding : StartupDestination
     data object Welcome : StartupDestination
     data object ProfileSetup : StartupDestination
+    data object PinLogin : StartupDestination
     data object Main : StartupDestination
 }

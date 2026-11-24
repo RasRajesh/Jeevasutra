@@ -31,6 +31,7 @@ class SplashViewModel(
                     StartupDestination.Onboarding -> NavRoutes.ONBOARDING
                     StartupDestination.Welcome -> NavRoutes.WELCOME
                     StartupDestination.ProfileSetup -> NavRoutes.PROFILE_SETUP
+                    StartupDestination.PinLogin -> NavRoutes.PIN_LOGIN
                     StartupDestination.Main -> NavRoutes.MAIN
                 }
             }

@@ -50,6 +50,16 @@ JeevaSutra App (in.jeevasutra.app)
 
 ---
 
+## 3.1. Mobile Login PIN Setup & Authentication
+
+1. **Optional PIN Setup:** Following initial Mobile OTP authentication or inside **Settings → Security**, users can configure a 6-digit Mobile Login PIN to secure their health vault.
+2. **KeyStore & PBKDF2 Encryption:** PINs are never stored in plain text. `PinSecurityManager` derives a 256-bit salted verifier hash using **PBKDF2-HMAC-SHA256** (10,000 iterations) with a 16-byte cryptographically random salt, encrypted via Android KeyStore AES-256 GCM.
+3. **Constant-Time Verification & Lockout:** PIN validation uses `MessageDigest.isEqual` to prevent timing attacks. Five consecutive incorrect attempts trigger progressive lockout throttling (30s to 15m).
+4. **OTP PIN Recovery:** Users who forget their PIN can re-verify their registered mobile number via Firebase SMS OTP to reset their PIN securely.
+5. **Settings Management:** Users can change or disable their Mobile PIN anytime from the Me/Settings screen.
+
+---
+
 ## 4. Local-First Health Data Privacy & Security
 
 > [!IMPORTANT]

@@ -36,6 +36,7 @@ import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.IosShare
 import androidx.compose.material.icons.filled.Language
+import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.MedicalServices
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.PhoneAndroid
@@ -83,6 +84,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
 import java.io.File
@@ -153,6 +155,16 @@ fun MeScreen(
     var showLanguageDialog by remember { mutableStateOf(false) }
     var showPreferencesDialog by remember { mutableStateOf(false) }
     var showGmailBackupDialog by remember { mutableStateOf(false) }
+
+    val isPinConfigured by viewModel.isPinConfigured.collectAsState()
+    var showDisablePinDialog by remember { mutableStateOf(false) }
+    var showChangePinDialog by remember { mutableStateOf(false) }
+    var showSetupPinDialog by remember { mutableStateOf(false) }
+
+    var oldPinInput by remember { mutableStateOf("") }
+    var newPinInput by remember { mutableStateOf("") }
+    var confirmNewPinInput by remember { mutableStateOf("") }
+    var pinDialogError by remember { mutableStateOf<String?>(null) }
 
     if (showExportDialog) {
         ExportReportDialog(
@@ -477,6 +489,181 @@ fun MeScreen(
                     enabled = !isDeleting
                 ) {
                     Text("Cancel")
+                }
+            }
+        )
+    }
+
+    if (showSetupPinDialog) {
+        AlertDialog(
+            onDismissRequest = { showSetupPinDialog = false },
+            icon = { Icon(Icons.Default.Lock, contentDescription = null, tint = MaterialTheme.colorScheme.primary) },
+            title = { Text(stringResource(id = R.string.pin_setup_title), fontWeight = FontWeight.Bold) },
+            text = {
+                Column(modifier = Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+                    OutlinedTextField(
+                        value = newPinInput,
+                        onValueChange = { if (it.length <= 6 && it.all { c -> c.isDigit() }) newPinInput = it },
+                        label = { Text(stringResource(id = R.string.pin_label_enter)) },
+                        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.NumberPassword),
+                        visualTransformation = PasswordVisualTransformation(),
+                        singleLine = true,
+                        modifier = Modifier.fillMaxWidth().testTag("me_setup_pin_new_input")
+                    )
+                    OutlinedTextField(
+                        value = confirmNewPinInput,
+                        onValueChange = { if (it.length <= 6 && it.all { c -> c.isDigit() }) confirmNewPinInput = it },
+                        label = { Text(stringResource(id = R.string.pin_label_confirm)) },
+                        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.NumberPassword),
+                        visualTransformation = PasswordVisualTransformation(),
+                        singleLine = true,
+                        modifier = Modifier.fillMaxWidth().testTag("me_setup_pin_confirm_input")
+                    )
+                    if (pinDialogError != null) {
+                        Text(pinDialogError!!, color = MaterialTheme.colorScheme.error, style = MaterialTheme.typography.bodySmall)
+                    }
+                }
+            },
+            confirmButton = {
+                Button(
+                    onClick = {
+                        if (newPinInput.length != 6) {
+                            pinDialogError = context.resources.getString(R.string.pin_err_length)
+                            return@Button
+                        }
+                        if (newPinInput != confirmNewPinInput) {
+                            pinDialogError = context.resources.getString(R.string.pin_err_mismatch)
+                            return@Button
+                        }
+                        viewModel.setupPinInSettings(newPinInput) { success ->
+                            if (success) {
+                                showSetupPinDialog = false
+                                Toast.makeText(context, context.resources.getString(R.string.pin_setup_success), Toast.LENGTH_SHORT).show()
+                            } else {
+                                pinDialogError = "Failed to configure PIN."
+                            }
+                        }
+                    },
+                    enabled = newPinInput.length == 6 && confirmNewPinInput.length == 6,
+                    modifier = Modifier.testTag("me_setup_pin_save_btn")
+                ) {
+                    Text(stringResource(id = R.string.pin_btn_save))
+                }
+            },
+            dismissButton = {
+                TextButton(onClick = { showSetupPinDialog = false }) {
+                    Text(stringResource(id = R.string.common_cancel))
+                }
+            }
+        )
+    }
+
+    if (showChangePinDialog) {
+        AlertDialog(
+            onDismissRequest = { showChangePinDialog = false },
+            icon = { Icon(Icons.Default.Lock, contentDescription = null, tint = MaterialTheme.colorScheme.primary) },
+            title = { Text(stringResource(id = R.string.pin_change_title), fontWeight = FontWeight.Bold) },
+            text = {
+                Column(modifier = Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+                    OutlinedTextField(
+                        value = oldPinInput,
+                        onValueChange = { if (it.length <= 6 && it.all { c -> c.isDigit() }) oldPinInput = it },
+                        label = { Text(stringResource(id = R.string.pin_change_label_old)) },
+                        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.NumberPassword),
+                        visualTransformation = PasswordVisualTransformation(),
+                        singleLine = true,
+                        modifier = Modifier.fillMaxWidth().testTag("me_change_pin_old_input")
+                    )
+                    OutlinedTextField(
+                        value = newPinInput,
+                        onValueChange = { if (it.length <= 6 && it.all { c -> c.isDigit() }) newPinInput = it },
+                        label = { Text(stringResource(id = R.string.pin_change_label_new)) },
+                        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.NumberPassword),
+                        visualTransformation = PasswordVisualTransformation(),
+                        singleLine = true,
+                        modifier = Modifier.fillMaxWidth().testTag("me_change_pin_new_input")
+                    )
+                    OutlinedTextField(
+                        value = confirmNewPinInput,
+                        onValueChange = { if (it.length <= 6 && it.all { c -> c.isDigit() }) confirmNewPinInput = it },
+                        label = { Text(stringResource(id = R.string.pin_change_label_confirm)) },
+                        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.NumberPassword),
+                        visualTransformation = PasswordVisualTransformation(),
+                        singleLine = true,
+                        modifier = Modifier.fillMaxWidth().testTag("me_change_pin_confirm_input")
+                    )
+                    if (pinDialogError != null) {
+                        Text(pinDialogError!!, color = MaterialTheme.colorScheme.error, style = MaterialTheme.typography.bodySmall)
+                    }
+                    TextButton(
+                        onClick = {
+                            showChangePinDialog = false
+                            showDisablePinDialog = true
+                        }
+                    ) {
+                        Text(stringResource(id = R.string.pin_settings_btn_disable), color = MaterialTheme.colorScheme.error)
+                    }
+                }
+            },
+            confirmButton = {
+                Button(
+                    onClick = {
+                        if (newPinInput.length != 6) {
+                            pinDialogError = context.resources.getString(R.string.pin_err_length)
+                            return@Button
+                        }
+                        if (newPinInput != confirmNewPinInput) {
+                            pinDialogError = context.resources.getString(R.string.pin_err_mismatch)
+                            return@Button
+                        }
+                        viewModel.changePin(oldPinInput, newPinInput) { res ->
+                            if (res.isSuccess) {
+                                showChangePinDialog = false
+                                Toast.makeText(context, "PIN updated successfully", Toast.LENGTH_SHORT).show()
+                            } else {
+                                pinDialogError = res.exceptionOrNull()?.message ?: "Failed to update PIN"
+                            }
+                        }
+                    },
+                    enabled = oldPinInput.length == 6 && newPinInput.length == 6 && confirmNewPinInput.length == 6,
+                    modifier = Modifier.testTag("me_change_pin_save_btn")
+                ) {
+                    Text(stringResource(id = R.string.profile_btn_save))
+                }
+            },
+            dismissButton = {
+                TextButton(onClick = { showChangePinDialog = false }) {
+                    Text(stringResource(id = R.string.common_cancel))
+                }
+            }
+        )
+    }
+
+    if (showDisablePinDialog) {
+        AlertDialog(
+            onDismissRequest = { showDisablePinDialog = false },
+            icon = { Icon(Icons.Default.Lock, contentDescription = null, tint = MaterialTheme.colorScheme.error) },
+            title = { Text(stringResource(id = R.string.pin_disable_confirm_title), fontWeight = FontWeight.Bold) },
+            text = { Text(stringResource(id = R.string.pin_disable_confirm_desc)) },
+            confirmButton = {
+                Button(
+                    onClick = {
+                        viewModel.disablePin { success ->
+                            showDisablePinDialog = false
+                            if (success) {
+                                Toast.makeText(context, "Mobile PIN disabled", Toast.LENGTH_SHORT).show()
+                            }
+                        }
+                    },
+                    colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.error),
+                    modifier = Modifier.testTag("me_disable_pin_confirm_btn")
+                ) {
+                    Text(stringResource(id = R.string.pin_settings_btn_disable))
+                }
+            },
+            dismissButton = {
+                TextButton(onClick = { showDisablePinDialog = false }) {
+                    Text(stringResource(id = R.string.common_cancel))
                 }
             }
         )
@@ -1044,6 +1231,26 @@ fun MeScreen(
                         title = stringResource(id = R.string.me_item_privacy_title),
                         subtitle = "Isolated zero-knowledge app sandbox storage",
                         onClick = { showSecurityPrivacyDialog = true }
+                    )
+                    HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))
+                    ProfileMenuItem(
+                        icon = Icons.Default.Lock,
+                        title = stringResource(id = R.string.pin_settings_section),
+                        subtitle = stringResource(
+                            id = if (isPinConfigured) R.string.pin_settings_status_enabled else R.string.pin_settings_status_disabled
+                        ),
+                        onClick = {
+                            pinDialogError = null
+                            oldPinInput = ""
+                            newPinInput = ""
+                            confirmNewPinInput = ""
+                            if (isPinConfigured) {
+                                showChangePinDialog = true
+                            } else {
+                                showSetupPinDialog = true
+                            }
+                        },
+                        modifier = Modifier.testTag("me_mobile_pin_item")
                     )
                 }
             }

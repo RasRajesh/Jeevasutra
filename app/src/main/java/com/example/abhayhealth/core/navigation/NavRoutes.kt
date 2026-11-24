@@ -11,6 +11,9 @@ object NavRoutes {
     const val VERIFY_OTP = "verify_otp"
     const val PROFILE_SETUP = "profile_setup"
     const val PROFILE_EDIT = "profile_edit"
+    const val PIN_SETUP = "pin_setup"
+    const val PIN_LOGIN = "pin_login"
+    const val CHANGE_PIN = "change_pin"
     const val EXTRACTION_REVIEW = "extraction_review/{recordId}"
     const val MAIN = "main"
 
