@@ -56,6 +56,16 @@ fun AbhayHealthApp(
     val userPreferences = remember(appContext) { UserPreferences(appContext) }
     val userPreferencesRepository = remember(userPreferences) { UserPreferencesRepositoryImpl(userPreferences) }
     val authRepository = remember(appContext) { FirebaseAuthRepository(appContext) }
+    val pinSecurityManager = remember(appContext) { com.example.abhayhealth.core.security.PinSecurityManager(appContext) }
+    val pinAuthenticationRepository = remember(pinSecurityManager) {
+        com.example.abhayhealth.data.repository.PinAuthenticationRepositoryImpl(pinSecurityManager)
+    }
+    val pinSetupViewModel = remember(pinAuthenticationRepository) {
+        com.example.abhayhealth.feature.pin.PinSetupViewModel(pinAuthenticationRepository)
+    }
+    val pinLoginViewModel = remember(pinAuthenticationRepository) {
+        com.example.abhayhealth.feature.pin.PinLoginViewModel(pinAuthenticationRepository)
+    }
     val completeOnboardingUseCase = remember(userPreferencesRepository) {
         CompleteOnboardingUseCase(userPreferencesRepository)
     }
@@ -179,12 +189,14 @@ fun AbhayHealthApp(
                         val getStartupDestinationUseCase = remember(
                             userPreferencesRepository,
                             authRepository,
-                            patientProfileRepository
+                            patientProfileRepository,
+                            pinAuthenticationRepository
                         ) {
                             GetStartupDestinationUseCase(
                                 userPreferencesRepository,
                                 authRepository,
-                                patientProfileRepository
+                                patientProfileRepository,
+                                pinAuthenticationRepository
                             )
                         }
                         val splashViewModel = remember(getStartupDestinationUseCase) {
@@ -296,7 +308,8 @@ fun AbhayHealthApp(
                             medicalRecordDatabase,
                             vitalReadingRepository,
                             firestoreHealthRepository,
-                            syncManager
+                            syncManager,
+                            pinAuthenticationRepository
                         ) {
                             MeViewModel(
                                 userPreferencesRepository = userPreferencesRepository,
@@ -307,7 +320,8 @@ fun AbhayHealthApp(
                                 vitalReadingRepository = vitalReadingRepository,
                                 firestoreHealthRepository = firestoreHealthRepository,
                                 firestoreHealthSyncManager = syncManager,
-                                medicineIntakeLogDao = medicalRecordDatabase.medicineIntakeLogDao()
+                                medicineIntakeLogDao = medicalRecordDatabase.medicineIntakeLogDao(),
+                                pinAuthenticationRepository = pinAuthenticationRepository
                             )
                         }
                         val aiAssistantViewModel = remember(
@@ -341,6 +355,8 @@ fun AbhayHealthApp(
                             trendsViewModel = trendsViewModel,
                             medicinesViewModel = medicinesViewModel,
                             meViewModel = meViewModel,
+                            pinSetupViewModel = pinSetupViewModel,
+                            pinLoginViewModel = pinLoginViewModel,
                             aiAssistantViewModel = aiAssistantViewModel,
                             syncStatus = cloudSyncStatus
                         )

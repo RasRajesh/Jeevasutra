@@ -10,6 +10,43 @@
     <string name="nav_medicines">మందులు</string>
     <string name="nav_me">ప్రొఫైల్</string>
 
+    <!-- Mobile Login PIN Strings -->
+    <string name="pin_setup_banner_title">మీ ఆరోగ్య రికార్డులను సురక్షితం చేయండి</string>
+    <string name="pin_setup_banner_desc">ప్రతిసారీ OTP కోసం నిరీక్షించకుండా జీవసూత్రను వేగంగా అన్‌లాక్ చేయడానికి 6-అంకెల పిన్‌ను అమర్చండి.</string>
+    <string name="pin_setup_title">మీ సురక్షిత PIN ను సృష్టించండి</string>
+    <string name="pin_setup_subtitle">మీ ఆరోగ్య సమాచారానికి అదనపు భద్రత అవసరం.</string>
+    <string name="pin_label_enter">6-అంకెల PIN ఎంటర్ చేయండి</string>
+    <string name="pin_label_confirm">6-అంకెల PIN ను ధృవీకరించండి</string>
+    <string name="pin_btn_save">PIN అమర్చండి</string>
+    <string name="pin_btn_skip">ఇప్పుడు వద్దు</string>
+    <string name="pin_err_length">PIN ఖచ్చితంగా 6 సంఖ్యలు ఉండాలి.</string>
+    <string name="pin_err_mismatch">PIN లు సరిపోలలేదు. సరిపోలే PIN లను ఎంటర్ చేయండి.</string>
+    <string name="pin_setup_success">మీ జీవసూత్ర PIN విజయవంతంగా అమర్చబడింది.</string>
+
+    <string name="pin_login_title">జీవసూత్రకు మరల స్వాగతం</string>
+    <string name="pin_login_subtitle">%1$s కోసం మీ ఆరోగ్య వాల్ట్‌ను అన్‌లాక్ చేయడానికి 6-అంకెల PIN ఎంటర్ చేయండి</string>
+    <string name="pin_login_masked_account">ఖాతా: %1$s</string>
+    <string name="pin_login_btn_unlock">యాప్‌ను అన్‌లాక్ చేయండి</string>
+    <string name="pin_login_btn_forgot">PIN మరిచిపోయారా?</string>
+    <string name="pin_login_btn_use_otp">మొబైల్ OTP తో సైన్ ఇన్ చేయండి</string>
+    <string name="pin_err_incorrect">తప్పు PIN. ఇంకా %1$d ప్రయత్నాలు ఉన్నాయి.</string>
+    <string name="pin_err_lockout">చాలా ఎక్కువ విఫల ప్రయత్నాలు. %1$d సెకన్ల తర్వాత మళ్లీ ప్రయత్నించండి.</string>
+
+    <string name="pin_settings_section">మొబైల్ లాగిన్ PIN</string>
+    <string name="pin_settings_status_enabled">మొబైల్ PIN ప్రారంభించబడింది (6-అంకెలు యాక్టివ్)</string>
+    <string name="pin_settings_status_disabled">మొబైల్ PIN నిలిపివేయబడింది (OTP లాగిన్ మాత్రమే)</string>
+    <string name="pin_settings_btn_setup">మొబైల్ PIN అమర్చండి</string>
+    <string name="pin_settings_btn_change">మొబైల్ PIN మార్చండి</string>
+    <string name="pin_settings_btn_disable">మొబైల్ PIN నిలిపివేయండి</string>
+    <string name="pin_change_title">మొబైల్ PIN మార్చండి</string>
+    <string name="pin_change_label_old">ప్రస్తుత 6-అంకెల PIN</string>
+    <string name="pin_change_label_new">కొత్త 6-అంకెల PIN</string>
+    <string name="pin_change_label_confirm">కొత్త 6-అంకెల PIN ను ధృవీకరించండి</string>
+    <string name="pin_disable_confirm_title">మొబైల్ PIN నిలిపివేయాలా?</string>
+    <string name="pin_disable_confirm_desc">PIN నిలిపివేస్తే జీవసూత్ర తెరిచినప్పుడల్లా మొబైల్ OTP అవసరమవుతుంది. మీ రికార్డులు సురక్షితంగా ఉంటాయి.</string>
+    <string name="pin_reset_otp_title">మరిచిపోయిన PIN ను రీసెట్ చేయండి</string>
+    <string name="pin_reset_otp_desc">కొత్త సురక్షిత PIN సృష్టించడానికి OTP ద్వారా మీ మొబైల్ నంబర్‌ను ధృవీకరించండి.</string>
+
     <!-- Splash Screen -->
     <string name="splash_loading">మీ సురక్షిత ఆరోగ్య వాతావరణం సిద్ధమవుతోంది…</string>
 

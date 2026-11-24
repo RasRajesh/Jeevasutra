@@ -51,6 +51,8 @@ fun AbhayHealthNavHost(
     trendsViewModel: TrendsViewModel,
     medicinesViewModel: MedicinesViewModel,
     meViewModel: MeViewModel,
+    pinSetupViewModel: com.example.abhayhealth.feature.pin.PinSetupViewModel,
+    pinLoginViewModel: com.example.abhayhealth.feature.pin.PinLoginViewModel,
     modifier: Modifier = Modifier,
     aiAssistantViewModel: AiAssistantViewModel? = null,
     syncStatus: CloudSyncStatus = CloudSyncStatus.ONLINE_SYNCED,
@@ -78,15 +80,12 @@ fun AbhayHealthNavHost(
                     profileViewModel.loadProfileForCurrentUser()
                     navController.navigate(NavRoutes.PROFILE_SETUP) {
                         popUpTo(NavRoutes.ONBOARDING) { inclusive = true }
-                        popUpTo(NavRoutes.WELCOME) { inclusive = true }
-                        popUpTo(NavRoutes.ENTER_PHONE) { inclusive = true }
-                        popUpTo(NavRoutes.SPLASH) { inclusive = true }
                     }
                 }
             }
             is AuthState.Unauthenticated -> {
                 val currentRoute = navController.currentDestination?.route
-                if (currentRoute == NavRoutes.MAIN || currentRoute == NavRoutes.PROFILE_EDIT || currentRoute?.startsWith("extraction_review") == true) {
+                if (currentRoute == NavRoutes.MAIN || currentRoute == NavRoutes.PROFILE_EDIT || currentRoute?.startsWith("extraction_review") == true || currentRoute == NavRoutes.PIN_LOGIN || currentRoute == NavRoutes.PIN_SETUP) {
                     navController.navigate(NavRoutes.ONBOARDING) {
                         popUpTo(NavRoutes.MAIN) { inclusive = true }
                     }
@@ -158,8 +157,57 @@ fun AbhayHealthNavHost(
             ProfileSetupScreen(
                 viewModel = profileViewModel,
                 onSetupFinished = {
-                    navController.navigate(NavRoutes.MAIN) {
+                    navController.navigate(NavRoutes.PIN_SETUP) {
                         popUpTo(NavRoutes.PROFILE_SETUP) { inclusive = true }
+                    }
+                }
+            )
+        }
+
+        composable(NavRoutes.PIN_SETUP) {
+            val authUser = (authState as? AuthState.Authenticated)?.user
+            val uid = authUser?.uid ?: ""
+            com.example.abhayhealth.feature.pin.PinSetupScreen(
+                viewModel = pinSetupViewModel,
+                accountUid = uid,
+                isResetMode = false,
+                canSkip = true,
+                onSuccess = {
+                    navController.navigate(NavRoutes.MAIN) {
+                        popUpTo(NavRoutes.PIN_SETUP) { inclusive = true }
+                    }
+                },
+                onSkip = {
+                    navController.navigate(NavRoutes.MAIN) {
+                        popUpTo(NavRoutes.PIN_SETUP) { inclusive = true }
+                    }
+                }
+            )
+        }
+
+        composable(NavRoutes.PIN_LOGIN) {
+            val authUser = (authState as? AuthState.Authenticated)?.user
+            val uid = authUser?.uid ?: ""
+            val phone = authUser?.phoneNumber
+            com.example.abhayhealth.feature.pin.PinLoginScreen(
+                viewModel = pinLoginViewModel,
+                accountUid = uid,
+                accountPhoneNumber = phone,
+                onSuccess = {
+                    navController.navigate(NavRoutes.MAIN) {
+                        popUpTo(NavRoutes.PIN_LOGIN) { inclusive = true }
+                    }
+                },
+                onForgotPinClick = {
+                    authViewModel.signOut()
+                    navController.navigate(NavRoutes.ENTER_PHONE) {
+                        popUpTo(NavRoutes.PIN_LOGIN) { inclusive = true }
+                    }
+                },
+                onUseOtpClick = {
+                    authViewModel.signOut()
+                    navController.navigate(NavRoutes.ENTER_PHONE) {
+                        popUpTo(NavRoutes.PIN_LOGIN) { inclusive = true }
                     }
                 }
             )
