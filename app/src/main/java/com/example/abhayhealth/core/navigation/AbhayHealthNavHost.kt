@@ -17,16 +17,18 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.example.abhayhealth.data.sync.CloudSyncStatus
 import com.example.abhayhealth.domain.model.AuthState
+import com.example.abhayhealth.feature.assistant.AiAssistantViewModel
 import com.example.abhayhealth.feature.auth.AuthViewModel
 import com.example.abhayhealth.feature.auth.EnterPhoneScreen
-import com.example.abhayhealth.feature.auth.VerifyOtpScreen
-import com.example.abhayhealth.feature.auth.WelcomeScreen
 import com.example.abhayhealth.feature.home.HomeViewModel
 import com.example.abhayhealth.feature.main.MainScreen
 import com.example.abhayhealth.feature.me.MeViewModel
 import com.example.abhayhealth.feature.medicines.MedicinesViewModel
-import com.example.abhayhealth.feature.onboarding.OnboardingScreen
 import com.example.abhayhealth.feature.onboarding.OnboardingViewModel
+import com.example.abhayhealth.feature.pin.PinLoginScreen
+import com.example.abhayhealth.feature.pin.PinLoginViewModel
+import com.example.abhayhealth.feature.pin.PinSetupScreen
+import com.example.abhayhealth.feature.pin.PinSetupViewModel
 import com.example.abhayhealth.feature.profile.ProfileEditScreen
 import com.example.abhayhealth.feature.profile.ProfileSetupScreen
 import com.example.abhayhealth.feature.profile.ProfileViewModel
@@ -36,8 +38,6 @@ import com.example.abhayhealth.feature.records.RecordsViewModel
 import com.example.abhayhealth.feature.splash.SplashScreen
 import com.example.abhayhealth.feature.splash.SplashViewModel
 import com.example.abhayhealth.feature.trends.TrendsViewModel
-
-import com.example.abhayhealth.feature.assistant.AiAssistantViewModel
 
 @Composable
 fun AbhayHealthNavHost(
@@ -51,8 +51,8 @@ fun AbhayHealthNavHost(
     trendsViewModel: TrendsViewModel,
     medicinesViewModel: MedicinesViewModel,
     meViewModel: MeViewModel,
-    pinSetupViewModel: com.example.abhayhealth.feature.pin.PinSetupViewModel,
-    pinLoginViewModel: com.example.abhayhealth.feature.pin.PinLoginViewModel,
+    pinSetupViewModel: PinSetupViewModel,
+    pinLoginViewModel: PinLoginViewModel,
     modifier: Modifier = Modifier,
     aiAssistantViewModel: AiAssistantViewModel? = null,
     syncStatus: CloudSyncStatus = CloudSyncStatus.ONLINE_SYNCED,
@@ -146,7 +146,7 @@ fun AbhayHealthNavHost(
         composable(NavRoutes.PIN_SETUP) {
             val authUser = (authState as? AuthState.Authenticated)?.user
             val uid = authUser?.uid ?: ""
-            com.example.abhayhealth.feature.pin.PinSetupScreen(
+            PinSetupScreen(
                 viewModel = pinSetupViewModel,
                 accountUid = uid,
                 isResetMode = false,
@@ -168,7 +168,7 @@ fun AbhayHealthNavHost(
             val authUser = (authState as? AuthState.Authenticated)?.user
             val uid = authUser?.uid ?: ""
             val phone = authUser?.phoneNumber
-            com.example.abhayhealth.feature.pin.PinLoginScreen(
+            PinLoginScreen(
                 viewModel = pinLoginViewModel,
                 accountUid = uid,
                 accountPhoneNumber = phone,

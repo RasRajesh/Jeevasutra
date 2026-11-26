@@ -215,8 +215,6 @@ fun MedicalInfographicCard(
 
             Spacer(modifier = Modifier.height(14.dp))
 
-            Spacer(modifier = Modifier.height(14.dp))
-
             // High-Tech Telemetry Status Header (3D Silhouette removed per user request)
             Surface(
                 modifier = Modifier.fillMaxWidth(),
