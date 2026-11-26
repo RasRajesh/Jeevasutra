@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="120dp"
+    android:height="120dp"
+    android:viewportWidth="120"
+    android:viewportHeight="120">
+    <!-- JeevaSutra Hand-Drawn Human Brand Emblem -->
+    <!-- Artistic hand-crafted human figure with open arms, vital heart pulse, and lotus cradle -->
+
+    <!-- Deep Teal Base Circle -->
+    <path
+        android:fillColor="#123C46"
+        android:pathData="M60,6m-54,0a54,54 0 1,0 108,0a54,54 0 1,0 -108,0" />
+
+    <!-- Ambient Glowing Mint Ring -->
+    <path
+        android:strokeColor="#16877F"
+        android:strokeWidth="2"
+        android:fillColor="#00000000"
+        android:strokeLineCap="round"
+        android:pathData="M60,14 C85.4,14 106,34.6 106,60 C106,85.4 85.4,106 60,106 C34.6,106 14,85.4 14,60 C14,34.6 34.6,14 60,14 Z" />
+
+    <!-- Hand-Drawn Outer Lotus Petals (Organic Soft Strokes) -->
+    <path
+        android:strokeColor="#5EEAD4"
+        android:strokeWidth="2.5"
+        android:fillColor="#105EEAD4"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M60,52 C45,58 32,74 32,90 C46,90 54,82 60,72 C66,82 74,90 88,90 C88,74 75,58 60,52 Z" />
+
+    <!-- Hand-Drawn Inner Lotus Petal Accents -->
+    <path
+        android:strokeColor="#DDF4EF"
+        android:strokeWidth="1.8"
+        android:fillColor="#00000000"
+        android:strokeLineCap="round"
+        android:pathData="M60,60 C50,66 40,76 42,88 C50,86 56,80 60,74 C64,80 70,86 78,88 C80,76 70,66 60,60 Z" />
+
+    <!-- Hand-Drawn Human Head (Artistic Circle with Warm Gold Fill) -->
+    <path
+        android:fillColor="#F59E0B"
+        android:strokeColor="#FDE68A"
+        android:strokeWidth="1.5"
+        android:pathData="M60,30 m-8,0 a8,8 0 1,0 16,0 a8,8 0 1,0 -16,0" />
+
+    <!-- Hand-Drawn Human Figure - Torso & Outstretched Open Arms (Organic Hand-Sketched Line Art) -->
+    <path
+        android:strokeColor="#F8FAFC"
+        android:strokeWidth="3.2"
+        android:fillColor="#00000000"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M34,44 C42,40 52,43 60,46 C68,43 78,40 86,44" />
+
+    <!-- Hand-Drawn Human Spine & Torso Line -->
+    <path
+        android:strokeColor="#F8FAFC"
+        android:strokeWidth="3"
+        android:fillColor="#00000000"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M60,46 C58,56 57,68 60,86" />
+
+    <!-- Hand-Drawn Vital Heart Pulse Ribbon (Golden Thread - Sutra Line) -->
+    <path
+        android:strokeColor="#F59E0B"
+        android:strokeWidth="2.8"
+        android:fillColor="#00000000"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M24,68 C34,68 40,68 45,68 L48,60 L52,78 L56,54 L60,74 L64,64 L67,68 C74,68 82,68 96,68" />
+
+    <!-- Hand-Drawn Heart Sparkle Dot -->
+    <path
+        android:fillColor="#FDE68A"
+        android:pathData="M56,54 m-2.5,0 a2.5,2.5 0 1,0 5,0 a2.5,2.5 0 1,0 -5,0" />
+
+</vector>

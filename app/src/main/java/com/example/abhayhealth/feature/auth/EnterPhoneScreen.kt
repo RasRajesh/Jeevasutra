@@ -85,24 +85,11 @@ fun EnterPhoneScreen(
 ) {
     val context = LocalContext.current
     val authState by viewModel.authState.collectAsState()
-    val otpUiState by viewModel.otpUiState.collectAsState()
-
-    var phoneDigits by rememberSaveable(otpUiState.phoneDigits) {
-        mutableStateOf(otpUiState.phoneDigits)
-    }
 
     val isGoogleLoading = authState is AuthState.Loading
-    val isSendingOtp = otpUiState.isSendingOtp
-    val isBusy = isGoogleLoading || isSendingOtp
-    val activeError = otpUiState.errorMessage ?: (authState as? AuthState.Error)?.message
+    val isBusy = isGoogleLoading
+    val activeError = (authState as? AuthState.Error)?.message
     val scrollState = rememberScrollState()
-
-    val submitOtpRequest: () -> Unit = {
-        viewModel.clearError()
-        onboardingViewModel?.completeOnboarding { }
-        val activity = context.findActivity()
-        viewModel.sendPhoneOtp(activity, phoneDigits)
-    }
 
     Scaffold(
         topBar = {
@@ -181,155 +168,71 @@ fun EnterPhoneScreen(
 
                     Spacer(modifier = Modifier.height(24.dp))
 
-                    // Primary +91 Mobile + OTP Login Card
-                    Card(
-                        modifier = Modifier.fillMaxWidth(),
-                        shape = RoundedCornerShape(20.dp),
-                        colors = CardDefaults.cardColors(
-                            containerColor = MaterialTheme.colorScheme.surface
+                    // Primary Authentication Buttons (Direct Quick Access & Gmail Sign-In)
+                    Button(
+                        onClick = {
+                            viewModel.clearError()
+                            onboardingViewModel?.completeOnboarding { }
+                            viewModel.signInDirectly()
+                        },
+                        enabled = !isBusy,
+                        shape = RoundedCornerShape(16.dp),
+                        colors = ButtonDefaults.buttonColors(
+                            containerColor = MaterialTheme.colorScheme.primary,
+                            contentColor = MaterialTheme.colorScheme.onPrimary
                         ),
-                        border = BorderStroke(
-                            width = 1.dp,
-                            color = MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.7f)
-                        ),
-                        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(54.dp)
+                            .testTag("direct_login_button")
                     ) {
-                        Column(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(20.dp),
-                            verticalArrangement = Arrangement.spacedBy(14.dp)
-                        ) {
-                            Row(
-                                verticalAlignment = Alignment.CenterVertically,
-                                horizontalArrangement = Arrangement.spacedBy(10.dp)
-                            ) {
-                                Box(
-                                    modifier = Modifier
-                                        .size(36.dp)
-                                        .clip(RoundedCornerShape(10.dp))
-                                        .background(MaterialTheme.colorScheme.primaryContainer),
-                                    contentAlignment = Alignment.Center
-                                ) {
-                                    Icon(
-                                        imageVector = Icons.Default.PhoneAndroid,
-                                        contentDescription = null,
-                                        tint = MaterialTheme.colorScheme.primary,
-                                        modifier = Modifier.size(20.dp)
-                                    )
-                                }
-                                Column {
-                                    Text(
-                                        text = stringResource(id = R.string.phone_title),
-                                        style = MaterialTheme.typography.titleMedium,
-                                        fontWeight = FontWeight.Bold,
-                                        color = MaterialTheme.colorScheme.onSurface
-                                    )
-                                    Text(
-                                        text = stringResource(id = R.string.phone_subtitle),
-                                        style = MaterialTheme.typography.bodySmall,
-                                        color = MaterialTheme.colorScheme.onSurfaceVariant
-                                    )
-                                }
-                            }
+                        Icon(
+                            imageVector = Icons.Default.FlashOn,
+                            contentDescription = null,
+                            tint = MaterialTheme.colorScheme.onPrimary,
+                            modifier = Modifier.size(22.dp)
+                        )
+                        Spacer(modifier = Modifier.width(10.dp))
+                        Text(
+                            text = "Get Started Immediately",
+                            style = MaterialTheme.typography.titleMedium,
+                            fontWeight = FontWeight.Bold
+                        )
+                    }
 
-                            Row(
-                                modifier = Modifier.fillMaxWidth(),
-                                verticalAlignment = Alignment.CenterVertically,
-                                horizontalArrangement = Arrangement.spacedBy(10.dp)
-                            ) {
-                                // Fixed +91 India country code chip
-                                Surface(
-                                    shape = RoundedCornerShape(14.dp),
-                                    color = MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.55f),
-                                    border = BorderStroke(
-                                        1.dp,
-                                        MaterialTheme.colorScheme.primary.copy(alpha = 0.35f)
-                                    ),
-                                    modifier = Modifier
-                                        .height(56.dp)
-                                        .testTag("country_code_prefix")
-                                ) {
-                                    Row(
-                                        modifier = Modifier.padding(horizontal = 14.dp),
-                                        verticalAlignment = Alignment.CenterVertically,
-                                        horizontalArrangement = Arrangement.spacedBy(6.dp)
-                                    ) {
-                                        Text(
-                                            text = "IN",
-                                            style = MaterialTheme.typography.labelMedium,
-                                            fontWeight = FontWeight.Bold,
-                                            color = MaterialTheme.colorScheme.primary
-                                        )
-                                        Text(
-                                            text = "+91",
-                                            style = MaterialTheme.typography.titleMedium,
-                                            fontWeight = FontWeight.ExtraBold,
-                                            color = MaterialTheme.colorScheme.onPrimaryContainer
-                                        )
-                                    }
-                                }
+                    Spacer(modifier = Modifier.height(14.dp))
 
-                                OutlinedTextField(
-                                    value = phoneDigits,
-                                    onValueChange = { raw ->
-                                        viewModel.clearError()
-                                        phoneDigits = FirebaseAuthRepository.normalizeIndianPhoneDigits(raw)
-                                    },
-                                    label = { Text(stringResource(id = R.string.phone_number_label)) },
-                                    placeholder = { Text(stringResource(id = R.string.phone_number_hint)) },
-                                    singleLine = true,
-                                    enabled = !isBusy,
-                                    shape = RoundedCornerShape(14.dp),
-                                    keyboardOptions = KeyboardOptions(
-                                        keyboardType = KeyboardType.Phone,
-                                        imeAction = ImeAction.Done
-                                    ),
-                                    keyboardActions = KeyboardActions(
-                                        onDone = {
-                                            if (phoneDigits.length == 10 && !isBusy) {
-                                                submitOtpRequest()
-                                            }
-                                        }
-                                    ),
-                                    trailingIcon = {
-                                        Text(
-                                            text = "${phoneDigits.length}/10",
-                                            style = MaterialTheme.typography.labelSmall,
-                                            color = if (phoneDigits.length == 10) {
-                                                MaterialTheme.colorScheme.primary
-                                            } else {
-                                                MaterialTheme.colorScheme.onSurfaceVariant
-                                            },
-                                            modifier = Modifier.padding(end = 10.dp)
-                                        )
-                                    },
-                                    colors = OutlinedTextFieldDefaults.colors(
-                                        focusedBorderColor = MaterialTheme.colorScheme.primary,
-                                        unfocusedBorderColor = MaterialTheme.colorScheme.outlineVariant
-                                    ),
-                                    modifier = Modifier
-                                        .weight(1f)
-                                        .testTag("phone_number_input")
-                                )
-                            }
-
-                            AbhayPrimaryButton(
-                                text = if (isSendingOtp) {
-                                    stringResource(id = R.string.phone_sending_otp)
-                                } else {
-                                    stringResource(id = R.string.phone_btn_send_otp)
-                                },
-                                onClick = submitOtpRequest,
-                                enabled = phoneDigits.length == 10 && !isBusy,
-                                isLoading = isSendingOtp,
-                                testTag = "send_otp_button",
-                                shape = RoundedCornerShape(14.dp),
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .height(52.dp)
-                            )
-                        }
+                    OutlinedButton(
+                        onClick = {
+                            viewModel.clearError()
+                            onboardingViewModel?.completeOnboarding { }
+                            val activity = context.findActivity() ?: context
+                            viewModel.signInWithGoogle(activity)
+                        },
+                        enabled = !isBusy,
+                        shape = RoundedCornerShape(16.dp),
+                        border = BorderStroke(
+                            1.2.dp,
+                            MaterialTheme.colorScheme.outlineVariant
+                        ),
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(52.dp)
+                            .testTag("google_sign_in_button")
+                    ) {
+                        Icon(
+                            imageVector = Icons.Default.Email,
+                            contentDescription = null,
+                            tint = MaterialTheme.colorScheme.primary,
+                            modifier = Modifier.size(20.dp)
+                        )
+                        Spacer(modifier = Modifier.width(10.dp))
+                        Text(
+                            text = stringResource(id = R.string.welcome_btn_continue_optional),
+                            style = MaterialTheme.typography.titleMedium,
+                            fontWeight = FontWeight.SemiBold,
+                            color = MaterialTheme.colorScheme.onSurface
+                        )
                     }
 
                     if (activeError != null) {
@@ -362,90 +265,6 @@ fun EnterPhoneScreen(
                                 )
                             }
                         }
-                    }
-
-                    Spacer(modifier = Modifier.height(20.dp))
-
-                    Row(
-                        modifier = Modifier.fillMaxWidth(),
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        HorizontalDivider(modifier = Modifier.weight(1f))
-                        Text(
-                            text = "  ${stringResource(id = R.string.auth_or_optional)}  ",
-                            style = MaterialTheme.typography.labelMedium,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant
-                        )
-                        HorizontalDivider(modifier = Modifier.weight(1f))
-                    }
-
-                    Spacer(modifier = Modifier.height(14.dp))
-
-                    // Direct Login Button (Testing Phase)
-                    Button(
-                        onClick = {
-                            viewModel.clearError()
-                            onboardingViewModel?.completeOnboarding { }
-                            viewModel.signInDirectly()
-                        },
-                        enabled = !isBusy,
-                        shape = RoundedCornerShape(14.dp),
-                        colors = ButtonDefaults.buttonColors(
-                            containerColor = MaterialTheme.colorScheme.tertiaryContainer,
-                            contentColor = MaterialTheme.colorScheme.onTertiaryContainer
-                        ),
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .height(52.dp)
-                            .testTag("direct_login_button")
-                    ) {
-                        Icon(
-                            imageVector = Icons.Default.FlashOn,
-                            contentDescription = null,
-                            tint = MaterialTheme.colorScheme.onTertiaryContainer,
-                            modifier = Modifier.size(20.dp)
-                        )
-                        Spacer(modifier = Modifier.width(8.dp))
-                        Text(
-                            text = stringResource(id = R.string.auth_btn_direct_login),
-                            style = MaterialTheme.typography.titleMedium,
-                            fontWeight = FontWeight.Bold
-                        )
-                    }
-
-                    Spacer(modifier = Modifier.height(12.dp))
-
-                    OutlinedButton(
-                        onClick = {
-                            viewModel.clearError()
-                            onboardingViewModel?.completeOnboarding { }
-                            val activity = context.findActivity() ?: context
-                            viewModel.signInWithGoogle(activity)
-                        },
-                        enabled = !isBusy,
-                        shape = RoundedCornerShape(14.dp),
-                        border = BorderStroke(
-                            1.2.dp,
-                            MaterialTheme.colorScheme.outlineVariant
-                        ),
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .height(50.dp)
-                            .testTag("google_sign_in_button")
-                    ) {
-                        Icon(
-                            imageVector = Icons.Default.Email,
-                            contentDescription = null,
-                            tint = MaterialTheme.colorScheme.primary,
-                            modifier = Modifier.size(18.dp)
-                        )
-                        Spacer(modifier = Modifier.width(8.dp))
-                        Text(
-                            text = stringResource(id = R.string.welcome_btn_continue_optional),
-                            style = MaterialTheme.typography.titleSmall,
-                            fontWeight = FontWeight.SemiBold,
-                            color = MaterialTheme.colorScheme.onSurface
-                        )
                     }
 
                     Spacer(modifier = Modifier.height(18.dp))
