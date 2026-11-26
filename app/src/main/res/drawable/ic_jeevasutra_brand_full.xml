@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="200dp"
+    android:height="92dp"
+    android:viewportWidth="260"
+    android:viewportHeight="120">
+
+    <!-- JeevaSutra Professional Master Brand Logo (Emblem + Vector Typography) -->
+
+    <!-- Deep Teal Base Container (#123C46) with Soft Rounded Frame -->
+    <path
+        android:fillColor="#123C46"
+        android:pathData="M16,10 H244 A14,14 0 0 1 258,24 V96 A14,14 0 0 1 244,110 H16 A14,14 0 0 1 2,96 V24 A14,14 0 0 1 16,10 Z" />
+
+    <!-- Ambient Glowing Border (#16877F) -->
+    <path
+        android:strokeColor="#16877F"
+        android:strokeWidth="1.8"
+        android:fillColor="#00000000"
+        android:pathData="M16,10 H244 A14,14 0 0 1 258,24 V96 A14,14 0 0 1 244,110 H16 A14,14 0 0 1 2,96 V24 A14,14 0 0 1 16,10 Z" />
+
+    <!-- === LEFT BRAND EMBLEM === -->
+    <!-- Ambient Ring Glow -->
+    <path
+        android:strokeColor="#16877F"
+        android:strokeWidth="1.5"
+        android:fillColor="#1616877F"
+        android:pathData="M56,22 C76.9,22 94,39.1 94,60 C94,80.9 76.9,98 56,98 C35.1,98 18,80.9 18,60 C18,39.1 35.1,22 56,22 Z" />
+
+    <!-- Outer Lotus Petals (Soft Mint Lines #5EEAD4) -->
+    <path
+        android:strokeColor="#5EEAD4"
+        android:strokeWidth="2.2"
+        android:fillColor="#125EEAD4"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M56,52 C44,58 32,72 32,86 C46,86 52,78 56,70 C60,78 66,86 80,86 C80,72 68,58 56,52 Z" />
+
+    <!-- Hand-Drawn Human Figure Head (Warm Gold #F59E0B) -->
+    <path
+        android:fillColor="#F59E0B"
+        android:strokeColor="#FDE68A"
+        android:strokeWidth="1.2"
+        android:pathData="M56,32 m-6.5,0 a6.5,6.5 0 1,0 13,0 a6.5,6.5 0 1,0 -13,0" />
+
+    <!-- Hand-Drawn Human Figure Torso & Outstretched Open Arms -->
+    <path
+        android:strokeColor="#F8FAFC"
+        android:strokeWidth="2.8"
+        android:fillColor="#00000000"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M34,46 C42,42 49,45 56,48 C63,45 70,42 78,46" />
+
+    <path
+        android:strokeColor="#F8FAFC"
+        android:strokeWidth="2.5"
+        android:fillColor="#00000000"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M56,48 C54,58 53,68 56,82" />
+
+    <!-- Vital Pulse Sutra Line (Golden Ribbon #F59E0B) -->
+    <path
+        android:strokeColor="#F59E0B"
+        android:strokeWidth="2.4"
+        android:fillColor="#00000000"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M24,66 C32,66 38,66 43,66 L46,58 L50,76 L54,52 L58,72 L62,62 L65,66 C72,66 80,66 90,66" />
+
+    <!-- Heart Pulse Sparkle Dot -->
+    <path
+        android:fillColor="#FDE68A"
+        android:pathData="M54,52 m-2,0 a2,2 0 1,0 4,0 a2,2 0 1,0 -4,0" />
+
+    <!-- === RIGHT BRAND TYPOGRAPHY: "JeevaSutra" === -->
+
+    <!-- Letter J -->
+    <path
+        android:strokeColor="#5EEAD4"
+        android:strokeWidth="3.5"
+        android:fillColor="#00000000"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M110,40 H120 V62 C120,68 116,72 110,72 C106,72 102,69 102,65" />
+
+    <!-- Letter e (1) -->
+    <path
+        android:strokeColor="#F8FAFC"
+        android:strokeWidth="3"
+        android:fillColor="#00000000"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M126,58 H138 C138,50 126,50 126,58 C126,66 138,66 138,62" />
+
+    <!-- Letter e (2) -->
+    <path
+        android:strokeColor="#F8FAFC"
+        android:strokeWidth="3"
+        android:fillColor="#00000000"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M144,58 H156 C156,50 144,50 144,58 C144,66 156,66 156,62" />
+
+    <!-- Letter v -->
+    <path
+        android:strokeColor="#F8FAFC"
+        android:strokeWidth="3"
+        android:fillColor="#00000000"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M162,50 L168,70 L174,50" />
+
+    <!-- Letter a -->
+    <path
+        android:strokeColor="#F8FAFC"
+        android:strokeWidth="3"
+        android:fillColor="#00000000"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M188,50 H180 C176,50 176,70 184,70 H188 V50 V70" />
+
+    <!-- Letter S (Gold Accent) -->
+    <path
+        android:strokeColor="#F59E0B"
+        android:strokeWidth="3.5"
+        android:fillColor="#00000000"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M208,42 C200,42 198,48 202,54 C206,60 208,64 200,70" />
+
+    <!-- Letter u -->
+    <path
+        android:strokeColor="#F8FAFC"
+        android:strokeWidth="2.8"
+        android:fillColor="#00000000"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M214,50 V66 C214,70 222,70 222,66 V50" />
+
+    <!-- Letter t -->
+    <path
+        android:strokeColor="#F8FAFC"
+        android:strokeWidth="2.8"
+        android:fillColor="#00000000"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M226,44 V70 M223,50 H231" />
+
+    <!-- Letter r -->
+    <path
+        android:strokeColor="#F8FAFC"
+        android:strokeWidth="2.8"
+        android:fillColor="#00000000"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M236,50 V70 M236,56 C240,50 244,50 246,52" />
+
+    <!-- Letter a (2) -->
+    <path
+        android:strokeColor="#F8FAFC"
+        android:strokeWidth="2.8"
+        android:fillColor="#00000000"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M254,50 H249 C247,50 247,70 252,70 H254 V50 V70" />
+
+    <!-- Gold Accent Underline Thread -->
+    <path
+        android:strokeColor="#F59E0B"
+        android:strokeWidth="1.8"
+        android:strokeLineCap="round"
+        android:pathData="M106,80 C130,78 180,82 254,80" />
+
+</vector>

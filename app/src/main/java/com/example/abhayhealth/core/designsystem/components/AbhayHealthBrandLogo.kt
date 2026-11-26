@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -27,17 +28,17 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.abhayhealth.R
 
 /**
- * Official AbhayHealth Unified Brand Logo Component.
- * Ensures the official launcher logo (medical shield, cross, and vital pulse)
- * is maintained identically and consistently across the entire application:
- * Splash, Welcome, Auth, Headers, TopBars, and Profile.
+ * Official JeevaSutra Unified Brand Logo & Emblem Component.
+ * Features a professional medical teal & gold hand-drawn emblem with custom brand typography.
  */
 @Composable
 fun AbhayHealthBrandLogo(
@@ -57,20 +58,39 @@ fun AbhayHealthBrandLogo(
         ) {
             LogoIconBox(size = size, shape = shape, elevation = elevation)
             Spacer(modifier = Modifier.height(12.dp))
-            Text(
-                text = stringResource(id = R.string.app_name),
-                style = MaterialTheme.typography.headlineMedium.copy(
-                    fontWeight = FontWeight.Bold,
-                    letterSpacing = (-0.5).sp
-                ),
-                color = textColor
-            )
+            
+            // Stylized JeevaSutra Typography
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Text(
+                    text = "Jeeva",
+                    style = MaterialTheme.typography.headlineMedium.copy(
+                        fontFamily = FontFamily.SansSerif,
+                        fontWeight = FontWeight.ExtraBold,
+                        letterSpacing = (-0.5).sp
+                    ),
+                    color = MaterialTheme.colorScheme.primary
+                )
+                Text(
+                    text = "Sutra",
+                    style = MaterialTheme.typography.headlineMedium.copy(
+                        fontFamily = FontFamily.Serif,
+                        fontWeight = FontWeight.Bold,
+                        letterSpacing = (-0.5).sp
+                    ),
+                    color = Color(0xFFF59E0B) // Gold Accent
+                )
+            }
+            
             if (showTagline) {
                 Spacer(modifier = Modifier.height(4.dp))
                 Text(
                     text = stringResource(id = R.string.app_tagline),
-                    style = MaterialTheme.typography.bodyMedium,
-                    color = textColor.copy(alpha = 0.75f)
+                    style = MaterialTheme.typography.bodyMedium.copy(
+                        fontFamily = FontFamily.Monospace,
+                        fontSize = 11.sp
+                    ),
+                    color = textColor.copy(alpha = 0.75f),
+                    textAlign = TextAlign.Center
                 )
             }
         }
@@ -117,10 +137,25 @@ private fun LogoIconBox(
             painter = painterResource(id = R.drawable.ic_abhay_logo),
             contentDescription = stringResource(id = R.string.app_name),
             modifier = Modifier
-                .fillSize()
+                .fillMaxSize()
                 .padding(size * 0.08f)
         )
     }
+}
+
+/**
+ * Full Horizontal Master Brand Logo Banner with Master Vector Asset.
+ */
+@Composable
+fun JeevaSutraFullBrandBanner(
+    modifier: Modifier = Modifier,
+    height: Dp = 60.dp
+) {
+    Image(
+        painter = painterResource(id = R.drawable.ic_jeevasutra_brand_full),
+        contentDescription = "JeevaSutra Master Brand Logo",
+        modifier = modifier.height(height)
+    )
 }
 
 /**
@@ -144,11 +179,26 @@ fun AbhayHealthHeaderBadge(
         )
         Spacer(modifier = Modifier.width(10.dp))
         Column {
-            Text(
-                text = title,
-                style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold),
-                color = MaterialTheme.colorScheme.onBackground
-            )
+            if (title == stringResource(id = R.string.app_name)) {
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Text(
+                        text = "Jeeva",
+                        style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.ExtraBold),
+                        color = MaterialTheme.colorScheme.onBackground
+                    )
+                    Text(
+                        text = "Sutra",
+                        style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold),
+                        color = Color(0xFFF59E0B)
+                    )
+                }
+            } else {
+                Text(
+                    text = title,
+                    style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold),
+                    color = MaterialTheme.colorScheme.onBackground
+                )
+            }
             if (subtitle != null) {
                 Text(
                     text = subtitle,
@@ -159,7 +209,3 @@ fun AbhayHealthHeaderBadge(
         }
     }
 }
-
-private fun Modifier.fillSize(): Modifier = this.then(
-    Modifier.padding(0.dp)
-)

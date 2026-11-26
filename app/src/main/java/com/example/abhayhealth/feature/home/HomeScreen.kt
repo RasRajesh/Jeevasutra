@@ -165,7 +165,9 @@ fun HomeScreen(
         }
     }
     val latestHr = remember(extractedBiomarkers, vitalReadings) {
-        val hrReading = vitalReadings.firstOrNull { it.type == "HEART_RATE" && it.systolic != null }
+        val hrReading = vitalReadings
+            .filter { it.type == "HEART_RATE" && it.systolic != null }
+            .maxByOrNull { it.timestamp }
         if (hrReading != null) {
             "${hrReading.systolic?.toInt()} BPM"
         } else {
@@ -176,7 +178,9 @@ fun HomeScreen(
         }
     }
     val latestSpo2 = remember(extractedBiomarkers, vitalReadings) {
-        val spo2Reading = vitalReadings.firstOrNull { it.type == "OXYGEN_SATURATION" && it.systolic != null }
+        val spo2Reading = vitalReadings
+            .filter { (it.type == "OXYGEN_SATURATION" || it.type == "SPO2") && it.systolic != null }
+            .maxByOrNull { it.timestamp }
         if (spo2Reading != null) {
             "${spo2Reading.systolic?.toInt()}%"
         } else {

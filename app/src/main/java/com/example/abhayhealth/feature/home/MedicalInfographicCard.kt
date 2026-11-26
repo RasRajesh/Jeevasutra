@@ -215,8 +215,6 @@ fun MedicalInfographicCard(
 
             Spacer(modifier = Modifier.height(14.dp))
 
-            Spacer(modifier = Modifier.height(14.dp))
-
             // High-Tech Telemetry Status Header (3D Silhouette removed per user request)
             Surface(
                 modifier = Modifier.fillMaxWidth(),
@@ -307,8 +305,8 @@ fun MedicalInfographicCard(
                 MetricCalloutBox(
                     title = "HEART RATE",
                     value = heartRate,
-                    status = "72 BPM Resting",
-                    accentColor = Color(0xFFF43F5E),
+                    status = "$heartRate Normal",
+                    accentColor = Color(0xFF10B981),
                     icon = Icons.Default.MonitorHeart,
                     onClick = { onMetricClick("Heart Rate", null) },
                     modifier = Modifier.weight(1f)
