@@ -122,15 +122,10 @@ private fun LogoIconBox(
                 spotColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.35f)
             ),
         shape = shape,
-        color = Color(0xFF123C46),
+        color = Color.White,
         border = BorderStroke(
             width = 1.dp,
-            brush = Brush.linearGradient(
-                colors = listOf(
-                    Color(0xFF16877F).copy(alpha = 0.5f),
-                    Color(0xFF123C46).copy(alpha = 0.8f)
-                )
-            )
+            color = Color(0xFF008B8B).copy(alpha = 0.4f)
         )
     ) {
         Image(
@@ -138,7 +133,7 @@ private fun LogoIconBox(
             contentDescription = stringResource(id = R.string.app_name),
             modifier = Modifier
                 .fillMaxSize()
-                .padding(size * 0.08f)
+                .padding(size * 0.04f)
         )
     }
 }
