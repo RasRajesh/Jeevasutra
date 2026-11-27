@@ -2,9 +2,7 @@ package com.example.abhayhealth.core.designsystem.components
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -21,9 +19,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
-import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.res.painterResource
@@ -37,14 +33,14 @@ import androidx.compose.ui.unit.sp
 import com.example.abhayhealth.R
 
 /**
- * Official JeevaSutra Unified Brand Logo & Emblem Component.
- * Features a professional medical teal & gold hand-drawn emblem with custom brand typography.
+ * Official JeevaSutra Master Brand Logo Component.
+ * Pixel-perfect implementation matching official brand asset specification.
  */
 @Composable
 fun AbhayHealthBrandLogo(
     modifier: Modifier = Modifier,
     size: Dp = 48.dp,
-    shape: Shape = RoundedCornerShape(percent = 26),
+    shape: Shape = CircleShape,
     elevation: Dp = 2.dp,
     showText: Boolean = false,
     showTagline: Boolean = false,
@@ -59,27 +55,15 @@ fun AbhayHealthBrandLogo(
             LogoIconBox(size = size, shape = shape, elevation = elevation)
             Spacer(modifier = Modifier.height(12.dp))
             
-            // Stylized JeevaSutra Typography
-            Row(verticalAlignment = Alignment.CenterVertically) {
-                Text(
-                    text = "Jeeva",
-                    style = MaterialTheme.typography.headlineMedium.copy(
-                        fontFamily = FontFamily.SansSerif,
-                        fontWeight = FontWeight.ExtraBold,
-                        letterSpacing = (-0.5).sp
-                    ),
-                    color = MaterialTheme.colorScheme.primary
-                )
-                Text(
-                    text = "Sutra",
-                    style = MaterialTheme.typography.headlineMedium.copy(
-                        fontFamily = FontFamily.Serif,
-                        fontWeight = FontWeight.Bold,
-                        letterSpacing = (-0.5).sp
-                    ),
-                    color = Color(0xFFF59E0B) // Gold Accent
-                )
-            }
+            Text(
+                text = "JeevaSutra",
+                style = MaterialTheme.typography.headlineMedium.copy(
+                    fontFamily = FontFamily.Serif,
+                    fontWeight = FontWeight.Bold,
+                    letterSpacing = (-0.5).sp
+                ),
+                color = Color(0xFF0B2545)
+            )
             
             if (showTagline) {
                 Spacer(modifier = Modifier.height(4.dp))
@@ -117,29 +101,27 @@ private fun LogoIconBox(
             .shadow(
                 elevation = elevation,
                 shape = shape,
-                clip = false,
-                ambientColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.2f),
-                spotColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.35f)
+                clip = true,
+                ambientColor = Color(0xFF0E8388).copy(alpha = 0.25f),
+                spotColor = Color(0xFF0B2545).copy(alpha = 0.35f)
             ),
         shape = shape,
         color = Color.White,
         border = BorderStroke(
             width = 1.dp,
-            color = Color(0xFF008B8B).copy(alpha = 0.4f)
+            color = Color(0xFF0E8388).copy(alpha = 0.4f)
         )
     ) {
         Image(
             painter = painterResource(id = R.drawable.ic_abhay_logo),
             contentDescription = stringResource(id = R.string.app_name),
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(size * 0.04f)
+            modifier = Modifier.fillMaxSize()
         )
     }
 }
 
 /**
- * Full Horizontal Master Brand Logo Banner with Master Vector Asset.
+ * Full Horizontal Master Brand Logo Banner.
  */
 @Composable
 fun JeevaSutraFullBrandBanner(
@@ -147,7 +129,7 @@ fun JeevaSutraFullBrandBanner(
     height: Dp = 60.dp
 ) {
     Image(
-        painter = painterResource(id = R.drawable.ic_jeevasutra_brand_full),
+        painter = painterResource(id = R.drawable.ic_abhay_logo),
         contentDescription = "JeevaSutra Master Brand Logo",
         modifier = modifier.height(height)
     )
@@ -169,31 +151,19 @@ fun AbhayHealthHeaderBadge(
     ) {
         AbhayHealthBrandLogo(
             size = iconSize,
-            shape = RoundedCornerShape(8.dp),
+            shape = CircleShape,
             elevation = 1.dp
         )
         Spacer(modifier = Modifier.width(10.dp))
         Column {
-            if (title == stringResource(id = R.string.app_name)) {
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    Text(
-                        text = "Jeeva",
-                        style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.ExtraBold),
-                        color = MaterialTheme.colorScheme.onBackground
-                    )
-                    Text(
-                        text = "Sutra",
-                        style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold),
-                        color = Color(0xFFF59E0B)
-                    )
-                }
-            } else {
-                Text(
-                    text = title,
-                    style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold),
-                    color = MaterialTheme.colorScheme.onBackground
-                )
-            }
+            Text(
+                text = title,
+                style = MaterialTheme.typography.titleMedium.copy(
+                    fontFamily = FontFamily.Serif,
+                    fontWeight = FontWeight.Bold
+                ),
+                color = Color(0xFF0B2545)
+            )
             if (subtitle != null) {
                 Text(
                     text = subtitle,
