@@ -1,130 +1,136 @@
 <?xml version="1.0" encoding="utf-8"?>
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
-    android:width="108dp"
-    android:height="108dp"
+    android:width="120dp"
+    android:height="120dp"
     android:viewportWidth="108"
     android:viewportHeight="108">
 
-    <!-- JeevaSutra Official Master Brand Logo (Fitted Safe-Zone Vector Asset) -->
+    <!-- JeevaSutra Official Master Brand Logo - Aptos Narrow Font Style -->
 
-    <!-- Pure Solid White Background (#FFFFFF) -->
+    <!-- Deep Dark Navy Background (#061325) -->
     <path
-        android:fillColor="#FFFFFF"
+        android:fillColor="#061325"
         android:pathData="M0,0h108v108h-108z" />
 
-    <!-- Outer Thick Medical Teal Ring (#0E8388) -->
+    <!-- Outer Medical Teal Ring (#12A39A) - Centered at (54,54), Radius 41.5dp -->
     <path
-        android:strokeColor="#0E8388"
-        android:strokeWidth="3.2"
+        android:strokeColor="#12A39A"
+        android:strokeWidth="3.4"
         android:fillColor="#00000000"
-        android:pathData="M54,19 C73.33,19 89,34.67 89,54 C89,73.33 73.33,89 54,89 C34.67,89 19,73.33 19,54 C19,34.67 34.67,19 54,19 Z" />
+        android:pathData="M54,12.5 C76.92,12.5 95.5,31.08 95.5,54 C95.5,76.92 76.92,95.5 54,95.5 C31.08,95.5 12.5,76.92 12.5,54 C12.5,31.08 31.08,12.5 54,12.5 Z" />
 
-    <!-- Inner Thin Deep Navy Ring (#0B2545) -->
+    <!-- Inner Pure White Ring (#FFFFFF) - Centered at (54,54), Radius 37.5dp -->
     <path
-        android:strokeColor="#0B2545"
-        android:strokeWidth="1.8"
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="2.2"
         android:fillColor="#00000000"
-        android:pathData="M54,22.5 C71.39,22.5 85.5,36.61 85.5,54 C85.5,71.39 71.39,85.5 54,85.5 C36.61,85.5 22.5,71.39 22.5,54 C22.5,36.61 36.61,22.5 54,22.5 Z" />
+        android:pathData="M54,16.5 C74.71,16.5 91.5,33.29 91.5,54 C91.5,74.71 74.71,91.5 54,91.5 C33.29,91.5 16.5,74.71 16.5,54 C16.5,33.29 33.29,16.5 54,16.5 Z" />
 
-    <!-- Side Inner Framing Arcs (#0E8388) -->
+    <!-- Side Inner Framing Arcs (#12A39A) - Endpoints at y = 62.0 -->
     <path
-        android:strokeColor="#0E8388"
-        android:strokeWidth="1.4"
-        android:fillColor="#00000000"
-        android:strokeLineCap="round"
-        android:pathData="M29,44 C27.5,49 27.5,57 30,62" />
-
-    <path
-        android:strokeColor="#0E8388"
-        android:strokeWidth="1.4"
+        android:strokeColor="#12A39A"
+        android:strokeWidth="1.6"
         android:fillColor="#00000000"
         android:strokeLineCap="round"
-        android:pathData="M79,44 C80.5,49 80.5,57 78,62" />
+        android:pathData="M27.0,38 C25.0,45 25.0,55 28.0,62" />
 
-    <!-- === UPPER CENTER GEOMETRIC EMBLEM === -->
+    <path
+        android:strokeColor="#12A39A"
+        android:strokeWidth="1.6"
+        android:fillColor="#00000000"
+        android:strokeLineCap="round"
+        android:pathData="M81.0,38 C83.0,45 83.0,55 80.0,62" />
 
-    <!-- Rounded Medical Teal Cross (#0E8388) -->
+    <!-- === CENTER GEOMETRIC EMBLEM === -->
+
+    <!-- Rounded Medical Teal Cross (#12A39A) -->
     <!-- Vertical Cross Stem -->
     <path
-        android:fillColor="#0E8388"
-        android:pathData="M47.5,30 H60.5 V51 C60.5,54.5 47.5,54.5 47.5,51 Z" />
+        android:fillColor="#12A39A"
+        android:pathData="M47,29 H61 V52 C61,55 47,55 47,52 Z" />
+
     <!-- Horizontal Cross Arms -->
     <path
-        android:fillColor="#0E8388"
-        android:pathData="M38.5,35 H69.5 C72,35 73.5,36.5 73.5,39 C73.5,41.5 72,43 69.5,43 H38.5 C36,43 34.5,41.5 34.5,39 C34.5,36.5 36,35 38.5,35 Z" />
+        android:fillColor="#12A39A"
+        android:pathData="M36,35 H72 C74.5,35 76,36.5 76,39 C76,41.5 74.5,43 72,43 H36 C33.5,43 32,41.5 32,39 C32,36.5 33.5,35 36,35 Z" />
 
-    <!-- Inner White Cutout for Cross Base U-Shape -->
+    <!-- Inner Cutout for Base of Cross U-Shape (#061325) -->
     <path
-        android:fillColor="#FFFFFF"
-        android:pathData="M50.5,45 H57.5 V49.5 C57.5,51.5 50.5,51.5 50.5,49.5 Z" />
+        android:fillColor="#061325"
+        android:pathData="M49.5,45.5 H58.5 V49.5 C58.5,52 49.5,52 49.5,49.5 Z" />
+    <path
+        android:strokeColor="#12A39A"
+        android:strokeWidth="1.6"
+        android:fillColor="#00000000"
+        android:pathData="M49.5,45.5 V49.5 C49.5,52 58.5,52 58.5,49.5 V45.5" />
 
-    <!-- Interlocked Continuous Deep Navy Heart-Infinity Loop (#0B2545) -->
+    <!-- Interlocked Continuous White Heart-Stethoscope Loop (#FFFFFF) -->
     <path
-        android:strokeColor="#0B2545"
-        android:strokeWidth="3.0"
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="3.4"
         android:fillColor="#00000000"
         android:strokeLineCap="round"
         android:strokeLineJoin="round"
-        android:pathData="M54,42 C49.5,36.5 42,33.5 42,28 C42,23.5 47.5,21.5 51.5,24.2 C53.2,25.8 54,27.5 54,29.5 C54,27.5 54.8,25.8 56.5,24.2 C60.5,21.5 66,23.5 66,28 C66,33.5 58.5,36.5 54,42 C46.5,48.5 42,48.5 43.8,44.8 C45.5,41.2 52.2,44.8 54,42 C55.8,44.8 62.5,41.2 64.2,44.8 C66,48.5 61.5,48.5 54,42 Z" />
+        android:pathData="M54,43.5 C49,37.5 41,34 41,27.5 C41,23.5 47,21.5 51,24.5 C53,26.5 54,28.5 54,30.5 C54,28.5 55,26.5 57,24.5 C61,21.5 67,23.5 67,27.5 C67,34 59,37.5 54,43.5 C46,50.5 41,50.5 43,46 C45,42 52,45.5 54,43.5 C56,45.5 63,42 65,46 C67,50.5 62,50.5 54,43.5 Z" />
 
-    <!-- Nested Gold Circle Dot (#C68B59) -->
+    <!-- Center Gold Circle Dot (#D4A029) with White Ring -->
     <path
         android:fillColor="#FFFFFF"
-        android:pathData="M54,30 m-3.5,0 a3.5,3.5 0 1,0 7,0 a3.5,3.5 0 1,0 -7,0" />
+        android:pathData="M54,30 m-4,0 a4,4 0 1,0 8,0 a4,4 0 1,0 -8,0" />
     <path
-        android:fillColor="#C68B59"
-        android:pathData="M54,30 m-2.5,0 a2.5,2.5 0 1,0 5,0 a2.5,2.5 0 1,0 -5,0" />
+        android:fillColor="#D4A029"
+        android:pathData="M54,30 m-2.8,0 a2.8,2.8 0 1,0 5.6,0 a2.8,2.8 0 1,0 -5.6,0" />
 
-    <!-- === BRAND NAME TYPOGRAPHY: "JeevaSutra" (#0B2545 - Authoritative Serif) === -->
+    <!-- === APTOS NARROW TYPOGRAPHY SYSTEM: "JeevaSutra" (#FFFFFF) === -->
 
-    <!-- J -->
+    <!-- J (Cap Height 9.5dp, y = 63.5 to 73.0) -->
     <path
-        android:fillColor="#0B2545"
-        android:pathData="M26,63 H32 V64 H30 V72 C30,75 27,76 24,75 C22,74 22,72 23,71 L24,72 C25,73 27,73 27,71 V64 H26 Z" />
+        android:fillColor="#FFFFFF"
+        android:pathData="M28.5,63.5 H32.7 V69.8 C32.7,72.0 31.3,73.0 30.0,73.0 C28.8,73.0 28.0,72.2 27.8,71.2 H29.1 C29.2,71.6 29.5,71.8 30.0,71.8 C30.9,71.8 31.4,71.2 31.4,70.0 V64.7 H28.5 Z" />
 
     <!-- e (1) -->
     <path
-        android:fillColor="#0B2545"
-        android:pathData="M33,68 C33,65 36,65 38,66 C40,67 40,69 38,69 H35 C35,71 37,72 39,72 C40,72 41,71 41,70 L42,71 C41,73 39,73 37,73 C34,73 33,71 33,68 Z M35,68 H38 C38,67 37,66 36,66 C35,66 35,67 35,68 Z" />
+        android:fillColor="#FFFFFF"
+        android:pathData="M33.5,69.5 C33.5,67.5 34.7,66.2 36.5,66.2 C38.3,66.2 39.3,67.5 39.3,69.5 V69.8 H34.8 C34.9,71.2 35.7,71.8 36.5,71.8 C37.2,71.8 37.8,71.3 38.0,70.8 H39.2 C38.8,72.2 37.8,73.0 36.5,73.0 C34.7,73.0 33.5,71.7 33.5,69.5 Z M38.0,68.7 C37.9,67.8 37.2,67.2 36.5,67.2 C35.7,67.2 35.0,67.8 34.9,68.7 Z" />
 
     <!-- e (2) -->
     <path
-        android:fillColor="#0B2545"
-        android:pathData="M43,68 C43,65 46,65 48,66 C50,67 50,69 48,69 H45 C45,71 47,72 49,72 C50,72 51,71 51,70 L52,71 C51,73 49,73 47,73 C44,73 43,71 43,68 Z M45,68 H48 C48,67 47,66 46,66 C45,66 45,67 45,68 Z" />
+        android:fillColor="#FFFFFF"
+        android:pathData="M40.1,69.5 C40.1,67.5 41.3,66.2 43.1,66.2 C44.9,66.2 45.9,67.5 45.9,69.5 V69.8 H41.4 C41.5,71.2 42.3,71.8 43.1,71.8 C43.8,71.8 44.4,71.3 44.6,70.8 H45.8 C45.4,72.2 44.4,73.0 43.1,73.0 C41.3,73.0 40.1,71.7 40.1,69.5 Z M44.6,68.7 C44.5,67.8 43.8,67.2 43.1,67.2 C42.3,67.2 41.6,67.8 41.5,68.7 Z" />
 
     <!-- v -->
     <path
-        android:fillColor="#0B2545"
-        android:pathData="M53,65 H55 L57,71 L59,65 H61 L58,73 H56 Z" />
+        android:fillColor="#FFFFFF"
+        android:pathData="M46.7,66.2 H48.0 L48.8,71.5 L49.6,66.2 H50.9 C50.2,68.5 49.5,70.8 49.1,73.0 H48.4 Z" />
 
     <!-- a (1) -->
     <path
-        android:fillColor="#0B2545"
-        android:pathData="M62,70 C62,68 64,68 66,68 H67 V70 C67,72 65,72 64,72 C63,72 62,71 62,70 Z M62,68 C62,65 65,65 67,65 V67 H65 C63,67 63,68 63,68 Z M67,65 H69 V73 H67 Z" />
+        android:fillColor="#FFFFFF"
+        android:pathData="M51.7,69.5 C51.7,67.6 52.9,66.2 54.4,66.2 C55.0,66.2 55.6,66.6 55.9,67.2 V66.2 H57.0 V73.0 H55.9 V72.1 C55.6,72.6 55.0,73.0 54.4,73.0 C52.9,73.0 51.7,71.7 51.7,69.5 Z M53.0,69.5 C53.0,71.0 53.8,71.8 54.7,71.8 C55.6,71.8 55.9,71.0 55.9,69.5 C55.9,68.0 55.6,67.2 54.7,67.2 C53.8,67.2 53.0,68.0 53.0,69.5 Z" />
 
-    <!-- S -->
+    <!-- S (Cap Height 9.5dp, y = 63.5 to 73.0 - Aptos Narrow Style) -->
     <path
-        android:fillColor="#0B2545"
-        android:pathData="M71,64 C73,62 76,62 76,64 C76,66 72,66 72,69 C72,72 76,72 76,70 L77,71 C76,73 72,73 71,71 C70,69 74,68 74,66 C74,64 71,65 71,64 Z" />
+        android:fillColor="#FFFFFF"
+        android:pathData="M57.8,65.0 C58.4,64.0 60.1,63.5 61.1,64.1 C61.8,64.6 61.8,65.6 61.1,66.2 C60.2,66.9 58.7,67.3 58.4,68.4 C58.0,69.8 58.9,71.8 60.4,71.8 C61.3,71.8 61.8,71.0 61.8,70.0 H60.5 C60.5,70.5 60.1,70.7 60.4,70.7 C59.5,70.7 59.3,69.9 59.4,68.9 C59.6,67.9 61.0,67.4 61.7,66.7 C62.4,65.9 62.4,64.5 61.5,63.8 C60.3,63.0 58.3,63.4 57.4,64.3 Z" />
 
     <!-- u -->
     <path
-        android:fillColor="#0B2545"
-        android:pathData="M78,65 H80 V70 C80,72 82,72 83,72 V65 H85 V73 H83 V72 C82,73 80,73 79,72 C78,71 78,69 78,67 Z" />
+        android:fillColor="#FFFFFF"
+        android:pathData="M62.6,66.2 H63.7 V70.5 C63.7,71.6 64.5,71.8 65.2,71.8 C65.9,71.8 66.4,71.2 66.4,70.3 V66.2 H67.5 V73.0 H66.4 V72.1 C65.9,72.6 65.3,73.0 64.6,73.0 C63.2,73.0 62.6,71.8 62.6,70.1 Z" />
 
     <!-- t -->
     <path
-        android:fillColor="#0B2545"
-        android:pathData="M86,63 H88 V65 H90 V66 H88 V71 C88,72 89,72 90,72 V73 C88,73 86,73 86,71 V66 H85 V65 H86 Z" />
+        android:fillColor="#FFFFFF"
+        android:pathData="M68.3,64.5 H69.4 V66.2 H70.6 V67.2 H69.4 V71.0 C69.4,71.8 69.8,71.8 70.6,71.8 V72.8 C69.4,72.8 68.3,72.1 68.3,71.0 V67.2 H67.6 V66.2 H68.3 Z" />
 
     <!-- r -->
     <path
-        android:fillColor="#0B2545"
-        android:pathData="M91,65 H93 V67 C93,66 94,65 96,65 V67 C94,67 93,68 93,70 V73 H91 Z" />
+        android:fillColor="#FFFFFF"
+        android:pathData="M71.4,66.2 H72.5 V67.3 C72.9,66.6 73.6,66.2 74.7,66.2 V67.4 C73.6,67.4 72.5,68.2 72.5,69.8 V73.0 H71.4 Z" />
 
     <!-- a (2) -->
     <path
-        android:fillColor="#0B2545"
-        android:pathData="M97,70 C97,68 99,68 101,68 H102 V70 C102,72 100,72 99,72 C98,72 97,71 97,70 Z M97,68 C97,65 100,65 102,65 V67 H100 C98,67 98,68 98,68 Z M102,65 H104 V73 H102 Z" />
+        android:fillColor="#FFFFFF"
+        android:pathData="M75.5,69.5 C75.5,67.6 76.7,66.2 78.2,66.2 C78.8,66.2 79.4,66.6 79.7,67.2 V66.2 H80.8 V73.0 H79.7 V72.1 C79.4,72.6 78.8,73.0 78.2,73.0 C76.7,73.0 75.5,71.7 75.5,69.5 Z M76.8,69.5 C76.8,71.0 77.6,71.8 78.5,71.8 C79.4,71.8 79.7,71.0 79.7,69.5 C79.7,68.0 79.4,67.2 78.5,67.2 C77.6,67.2 76.8,68.0 76.8,69.5 Z" />
 
 </vector>

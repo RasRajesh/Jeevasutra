@@ -8,11 +8,9 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -62,7 +60,7 @@ fun AbhayHealthBrandLogo(
                     fontWeight = FontWeight.Bold,
                     letterSpacing = (-0.5).sp
                 ),
-                color = Color(0xFF0B2545)
+                color = textColor
             )
             
             if (showTagline) {
@@ -102,14 +100,14 @@ private fun LogoIconBox(
                 elevation = elevation,
                 shape = shape,
                 clip = true,
-                ambientColor = Color(0xFF0E8388).copy(alpha = 0.25f),
-                spotColor = Color(0xFF0B2545).copy(alpha = 0.35f)
+                ambientColor = Color(0xFF008B8B).copy(alpha = 0.25f),
+                spotColor = Color(0xFF001A4A).copy(alpha = 0.35f)
             ),
         shape = shape,
-        color = Color.White,
+        color = Color(0xFF001A4A),
         border = BorderStroke(
             width = 1.dp,
-            color = Color(0xFF0E8388).copy(alpha = 0.4f)
+            color = Color(0xFF008B8B).copy(alpha = 0.5f)
         )
     ) {
         Image(
@@ -162,7 +160,7 @@ fun AbhayHealthHeaderBadge(
                     fontFamily = FontFamily.Serif,
                     fontWeight = FontWeight.Bold
                 ),
-                color = Color(0xFF0B2545)
+                color = MaterialTheme.colorScheme.onSurface
             )
             if (subtitle != null) {
                 Text(
