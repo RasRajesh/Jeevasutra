@@ -4,72 +4,129 @@
     android:height="108dp"
     android:viewportWidth="108"
     android:viewportHeight="108">
-    <!-- JeevaSutra Official Brand Emblem: Hand-Drawn Human Figure + Lotus + Vital Heart Pulse -->
 
-    <!-- Deep Teal Base Background (#123C46) -->
+    <!-- JeevaSutra Official Brand Name Logo (Non-abstract, Name-Based Typography Logo) -->
+
+    <!-- Deep Medical Teal Background (#123C46) -->
     <path
         android:fillColor="#123C46"
         android:pathData="M0,0h108v108h-108z" />
 
-    <!-- Glowing Mint Circle -->
+    <!-- Ambient Outer Ring (#16877F) -->
     <path
         android:strokeColor="#16877F"
-        android:strokeWidth="2"
-        android:fillColor="#1616877F"
-        android:pathData="M54,12 C77.2,12 96,30.8 96,54 C96,77.2 77.2,96 54,96 C30.8,96 12,77.2 12,54 C12,30.8 30.8,12 54,12 Z" />
+        android:strokeWidth="1.5"
+        android:fillColor="#1016877F"
+        android:pathData="M54,10 C78.3,10 98,29.7 98,54 C98,78.3 78.3,98 54,98 C29.7,98 10,78.3 10,54 C10,29.7 29.7,10 54,10 Z" />
 
-    <!-- Outer Lotus Petals (Hand-Drawn Soft Teal Lines) -->
+    <!-- === BRAND NAME LINE 1: "JEEVA" (Vibrant Mint #5EEAD4 & White #F8FAFC) === -->
+
+    <!-- J -->
     <path
         android:strokeColor="#5EEAD4"
-        android:strokeWidth="2.5"
-        android:fillColor="#105EEAD4"
-        android:strokeLineCap="round"
-        android:strokeLineJoin="round"
-        android:pathData="M54,46 C40,52 28,68 28,84 C42,84 50,76 54,66 C58,76 66,84 80,84 C80,68 68,52 54,46 Z" />
-
-    <!-- Inner Lotus Petal Accents -->
-    <path
-        android:strokeColor="#DDF4EF"
-        android:strokeWidth="1.8"
+        android:strokeWidth="3.2"
         android:fillColor="#00000000"
         android:strokeLineCap="round"
-        android:pathData="M54,54 C44,60 34,70 36,82 C44,80 50,74 54,68 C58,74 64,80 72,82 C74,70 64,60 54,54 Z" />
+        android:strokeLineJoin="round"
+        android:pathData="M24,34 H30 V46 C30,50 26,52 22,50" />
 
-    <!-- Hand-Drawn Human Figure Head (Warm Golden Glow) -->
-    <path
-        android:fillColor="#F59E0B"
-        android:strokeColor="#FDE68A"
-        android:strokeWidth="1.5"
-        android:pathData="M54,24 m-7,0 a7,7 0 1,0 14,0 a7,7 0 1,0 -14,0" />
-
-    <!-- Hand-Drawn Human Figure Torso & Outstretched Open Arms -->
+    <!-- E (1) -->
     <path
         android:strokeColor="#F8FAFC"
         android:strokeWidth="3"
         android:fillColor="#00000000"
         android:strokeLineCap="round"
         android:strokeLineJoin="round"
-        android:pathData="M30,38 C38,34 46,37 54,40 C62,37 70,34 78,38" />
+        android:pathData="M34,34 V48 M34,34 H43 M34,41 H41 M34,48 H43" />
 
+    <!-- E (2) -->
     <path
         android:strokeColor="#F8FAFC"
-        android:strokeWidth="2.8"
+        android:strokeWidth="3"
         android:fillColor="#00000000"
         android:strokeLineCap="round"
         android:strokeLineJoin="round"
-        android:pathData="M54,40 C52,50 51,62 54,80" />
+        android:pathData="M47,34 V48 M47,34 H56 M47,41 H54 M47,48 H56" />
 
-    <!-- Hand-Drawn Vital Pulse Sutra Line -->
+    <!-- V -->
+    <path
+        android:strokeColor="#F8FAFC"
+        android:strokeWidth="3"
+        android:fillColor="#00000000"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M60,34 L66,48 L72,34" />
+
+    <!-- A -->
+    <path
+        android:strokeColor="#F8FAFC"
+        android:strokeWidth="3"
+        android:fillColor="#00000000"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M76,48 L82,34 L88,48 M78,43 H86" />
+
+
+    <!-- === BRAND NAME LINE 2: "SUTRA" (Warm Luxury Gold #F59E0B) === -->
+
+    <!-- S -->
     <path
         android:strokeColor="#F59E0B"
-        android:strokeWidth="2.6"
+        android:strokeWidth="3.2"
         android:fillColor="#00000000"
         android:strokeLineCap="round"
         android:strokeLineJoin="round"
-        android:pathData="M20,62 C30,62 36,62 41,62 L44,54 L48,72 L52,48 L56,68 L60,58 L63,62 C70,62 78,62 92,62" />
+        android:pathData="M30,58 C24,56 22,62 26,65 C30,68 28,74 22,72" />
 
-    <!-- Heart Pulse Sparkle Dot -->
+    <!-- U -->
+    <path
+        android:strokeColor="#F59E0B"
+        android:strokeWidth="3"
+        android:fillColor="#00000000"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M35,58 V68 C35,73 43,73 43,68 V58" />
+
+    <!-- T -->
+    <path
+        android:strokeColor="#F59E0B"
+        android:strokeWidth="3"
+        android:fillColor="#00000000"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M47,58 H59 M53,58 V73" />
+
+    <!-- R -->
+    <path
+        android:strokeColor="#F59E0B"
+        android:strokeWidth="3"
+        android:fillColor="#00000000"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M63,58 V73 M63,58 H71 C74,58 74,65 69,65 H63 M68,65 L73,73" />
+
+    <!-- A -->
+    <path
+        android:strokeColor="#F59E0B"
+        android:strokeWidth="3"
+        android:fillColor="#00000000"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M77,73 L83,58 L89,73 M79,68 H87" />
+
+
+    <!-- === GOLDEN SUTRA VITAL PULSE RIBBON UNDERLINE === -->
+    <path
+        android:strokeColor="#F59E0B"
+        android:strokeWidth="2"
+        android:fillColor="#00000000"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M18,80 C28,80 34,80 39,80 L42,74 L46,88 L50,68 L54,84 L58,76 L61,80 C68,80 78,80 90,80" />
+
+    <!-- Sparkle Pulse Core Dot -->
     <path
         android:fillColor="#FDE68A"
-        android:pathData="M52,48 m-2,0 a2,2 0 1,0 4,0 a2,2 0 1,0 -4,0" />
+        android:pathData="M50,68 m-1.8,0 a1.8,1.8 0 1,0 3.6,0 a1.8,1.8 0 1,0 -3.6,0" />
+
 </vector>
