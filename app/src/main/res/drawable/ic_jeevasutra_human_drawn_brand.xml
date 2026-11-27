@@ -2,78 +2,129 @@
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     android:width="120dp"
     android:height="120dp"
-    android:viewportWidth="120"
-    android:viewportHeight="120">
-    <!-- JeevaSutra Hand-Drawn Human Brand Emblem -->
-    <!-- Artistic hand-crafted human figure with open arms, vital heart pulse, and lotus cradle -->
+    android:viewportWidth="108"
+    android:viewportHeight="108">
 
-    <!-- Deep Teal Base Circle -->
-    <path
-        android:fillColor="#123C46"
-        android:pathData="M60,6m-54,0a54,54 0 1,0 108,0a54,54 0 1,0 -108,0" />
+    <!-- JeevaSutra Official Master Brand Logo (Pixel-Perfect Match to Reference Design) -->
 
-    <!-- Ambient Glowing Mint Ring -->
+    <!-- Pure Solid White Background (#FFFFFF) -->
     <path
-        android:strokeColor="#16877F"
-        android:strokeWidth="2"
+        android:fillColor="#FFFFFF"
+        android:pathData="M0,0h108v108h-108z" />
+
+    <!-- Outer Thick Medical Teal Ring (#0E8388) -->
+    <path
+        android:strokeColor="#0E8388"
+        android:strokeWidth="3.2"
         android:fillColor="#00000000"
-        android:strokeLineCap="round"
-        android:pathData="M60,14 C85.4,14 106,34.6 106,60 C106,85.4 85.4,106 60,106 C34.6,106 14,85.4 14,60 C14,34.6 34.6,14 60,14 Z" />
+        android:pathData="M54,12 C77.19,12 96,30.81 96,54 C96,77.19 77.19,96 54,96 C30.81,96 12,77.19 12,54 C12,30.81 30.81,12 54,12 Z" />
 
-    <!-- Hand-Drawn Outer Lotus Petals (Organic Soft Strokes) -->
+    <!-- Inner Thin Deep Navy Ring (#0B2545) -->
     <path
-        android:strokeColor="#5EEAD4"
-        android:strokeWidth="2.5"
-        android:fillColor="#105EEAD4"
-        android:strokeLineCap="round"
-        android:strokeLineJoin="round"
-        android:pathData="M60,52 C45,58 32,74 32,90 C46,90 54,82 60,72 C66,82 74,90 88,90 C88,74 75,58 60,52 Z" />
-
-    <!-- Hand-Drawn Inner Lotus Petal Accents -->
-    <path
-        android:strokeColor="#DDF4EF"
+        android:strokeColor="#0B2545"
         android:strokeWidth="1.8"
         android:fillColor="#00000000"
+        android:pathData="M54,16 C74.98,16 92,33.02 92,54 C92,74.98 74.98,92 54,92 C33.02,92 16,74.98 16,54 C16,33.02 33.02,16 54,16 Z" />
+
+    <!-- Side Inner Framing Arcs (#0E8388) -->
+    <path
+        android:strokeColor="#0E8388"
+        android:strokeWidth="1.4"
+        android:fillColor="#00000000"
         android:strokeLineCap="round"
-        android:pathData="M60,60 C50,66 40,76 42,88 C50,86 56,80 60,74 C64,80 70,86 78,88 C80,76 70,66 60,60 Z" />
+        android:pathData="M24,42 C22,48 22,58 25,64" />
 
-    <!-- Hand-Drawn Human Head (Artistic Circle with Warm Gold Fill) -->
     <path
-        android:fillColor="#F59E0B"
-        android:strokeColor="#FDE68A"
-        android:strokeWidth="1.5"
-        android:pathData="M60,30 m-8,0 a8,8 0 1,0 16,0 a8,8 0 1,0 -16,0" />
+        android:strokeColor="#0E8388"
+        android:strokeWidth="1.4"
+        android:fillColor="#00000000"
+        android:strokeLineCap="round"
+        android:pathData="M84,42 C86,48 86,58 83,64" />
 
-    <!-- Hand-Drawn Human Figure - Torso & Outstretched Open Arms (Organic Hand-Sketched Line Art) -->
+    <!-- === UPPER CENTER GEOMETRIC EMBLEM === -->
+
+    <!-- Rounded Medical Teal Cross (#0E8388) -->
+    <!-- Vertical Cross Stem -->
     <path
-        android:strokeColor="#F8FAFC"
+        android:fillColor="#0E8388"
+        android:pathData="M47,28 H61 V50 C61,54 47,54 47,50 Z" />
+    <!-- Horizontal Cross Arms -->
+    <path
+        android:fillColor="#0E8388"
+        android:pathData="M37,33 H71 C73.5,33 75,34.5 75,37 C75,39.5 73.5,41 71,41 H37 C34.5,41 33,39.5 33,37 C33,34.5 34.5,33 37,33 Z" />
+
+    <!-- Inner White Cutout for Cross Base U-Shape -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M50,44 H58 V49 C58,51 50,51 50,49 Z" />
+
+    <!-- Interlocked Continuous Deep Navy Heart-Infinity Loop (#0B2545) -->
+    <path
+        android:strokeColor="#0B2545"
         android:strokeWidth="3.2"
         android:fillColor="#00000000"
         android:strokeLineCap="round"
         android:strokeLineJoin="round"
-        android:pathData="M34,44 C42,40 52,43 60,46 C68,43 78,40 86,44" />
+        android:pathData="M54,40 C49,34 41,31 41,25 C41,20 47,18 51,21 C53,23 54,25 54,27 C54,25 55,23 57,21 C61,18 67,20 67,25 C67,31 59,34 54,40 C46,47 41,47 43,43 C45,39 52,43 54,40 C56,43 63,39 65,43 C67,47 62,47 54,40 Z" />
 
-    <!-- Hand-Drawn Human Spine & Torso Line -->
+    <!-- Nested Gold Circle Dot (#C68B59 / #D4AF37) -->
     <path
-        android:strokeColor="#F8FAFC"
-        android:strokeWidth="3"
-        android:fillColor="#00000000"
-        android:strokeLineCap="round"
-        android:strokeLineJoin="round"
-        android:pathData="M60,46 C58,56 57,68 60,86" />
+        android:fillColor="#FFFFFF"
+        android:pathData="M54,27 m-4,0 a4,4 0 1,0 8,0 a4,4 0 1,0 -8,0" />
+    <path
+        android:fillColor="#C68B59"
+        android:pathData="M54,27 m-2.8,0 a2.8,2.8 0 1,0 5.6,0 a2.8,2.8 0 1,0 -5.6,0" />
 
-    <!-- Hand-Drawn Vital Heart Pulse Ribbon (Golden Thread - Sutra Line) -->
-    <path
-        android:strokeColor="#F59E0B"
-        android:strokeWidth="2.8"
-        android:fillColor="#00000000"
-        android:strokeLineCap="round"
-        android:strokeLineJoin="round"
-        android:pathData="M24,68 C34,68 40,68 45,68 L48,60 L52,78 L56,54 L60,74 L64,64 L67,68 C74,68 82,68 96,68" />
+    <!-- === BRAND NAME TYPOGRAPHY: "JeevaSutra" (#0B2545 - Authoritative Serif) === -->
 
-    <!-- Hand-Drawn Heart Sparkle Dot -->
+    <!-- J -->
     <path
-        android:fillColor="#FDE68A"
-        android:pathData="M56,54 m-2.5,0 a2.5,2.5 0 1,0 5,0 a2.5,2.5 0 1,0 -5,0" />
+        android:fillColor="#0B2545"
+        android:pathData="M23,61 H30 V62 H28 V72 C28,75 25,76 22,75 C20,74 20,72 21,71 L22,72 C23,73 25,73 25,71 V62 H23 Z" />
+
+    <!-- e (1) -->
+    <path
+        android:fillColor="#0B2545"
+        android:pathData="M31,67 C31,64 34,64 36,65 C38,66 38,68 36,68 H33 C33,70 35,71 37,71 C38,71 39,70 39,69 L40,70 C39,72 37,72 35,72 C32,72 31,70 31,67 Z M33,67 H36 C36,66 35,65 34,65 C33,65 33,66 33,67 Z" />
+
+    <!-- e (2) -->
+    <path
+        android:fillColor="#0B2545"
+        android:pathData="M41,67 C41,64 44,64 46,65 C48,66 48,68 46,68 H43 C43,70 45,71 47,71 C48,71 49,70 49,69 L50,70 C49,72 47,72 45,72 C42,72 41,70 41,67 Z M43,67 H46 C46,66 45,65 44,65 C43,65 43,66 43,67 Z" />
+
+    <!-- v -->
+    <path
+        android:fillColor="#0B2545"
+        android:pathData="M51,64 H53 L55,70 L57,64 H59 L56,72 H54 Z" />
+
+    <!-- a (1) -->
+    <path
+        android:fillColor="#0B2545"
+        android:pathData="M60,69 C60,67 62,67 64,67 H65 V69 C65,71 63,71 62,71 C61,71 60,70 60,69 Z M60,67 C60,64 63,64 65,64 V66 H63 C61,66 61,67 61,67 Z M65,64 H67 V72 H65 Z" />
+
+    <!-- S -->
+    <path
+        android:fillColor="#0B2545"
+        android:pathData="M69,63 C71,61 74,61 74,63 C74,65 70,65 70,68 C70,71 74,71 74,69 L75,70 C74,72 70,72 69,70 C68,68 72,67 72,65 C72,63 69,64 69,63 Z" />
+
+    <!-- u -->
+    <path
+        android:fillColor="#0B2545"
+        android:pathData="M76,64 H78 V69 C78,71 80,71 81,71 V64 H83 V72 H81 V71 C80,72 78,72 77,71 C76,70 76,68 76,66 Z" />
+
+    <!-- t -->
+    <path
+        android:fillColor="#0B2545"
+        android:pathData="M84,62 H86 V64 H88 V65 H86 V70 C86,71 87,71 88,71 V72 C86,72 84,72 84,70 V65 H83 V64 H84 Z" />
+
+    <!-- r -->
+    <path
+        android:fillColor="#0B2545"
+        android:pathData="M89,64 H91 V66 C91,65 92,64 94,64 V66 C92,66 91,67 91,69 V72 H89 Z" />
+
+    <!-- a (2) -->
+    <path
+        android:fillColor="#0B2545"
+        android:pathData="M95,69 C95,67 97,67 99,67 H100 V69 C100,71 98,71 97,71 C96,71 95,70 95,69 Z M95,67 C95,64 98,64 100,64 V66 H98 C96,66 96,67 96,67 Z M100,64 H102 V72 H100 Z" />
 
 </vector>
